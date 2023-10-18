@@ -15,3 +15,6 @@ CREATE TABLE faze_projekta(
 ALTER TABLE faze_projekta
     ADD Datz date --datum zavrsetka
     ADD CONSTRAINT dat_ch CHECK (datp <= datz);
+
+--Brisanje tabele 
+DROP TABLE faze_projekta;
