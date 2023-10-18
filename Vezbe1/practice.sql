@@ -70,3 +70,12 @@ SELECT mbr, ime, prz
 SELECT mbr, ime, prz
     FROM radnik
     WHERE ime NOT LIKE 'A%';
+
+--IN and NOT IN
+SELECT DISTINCT mbr
+    FROM radproj
+    WHERE brc IN (2,4,6) OR spr = '10';
+
+SELECT mbr, ime, prz
+    FROM radnik
+    WHERE ime NOT IN ('Ana','Sanja');
