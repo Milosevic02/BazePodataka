@@ -26,3 +26,8 @@ SELECT ime,prz
 --Distinct Select
 SELECT DISTINCT ime,prz
     FROM radnik;
+
+--SELECT with where
+SELECT mbr,ime,prz 
+    FROM radnik
+    WHERE plt > 25000
