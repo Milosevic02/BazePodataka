@@ -18,3 +18,11 @@ ALTER TABLE faze_projekta
 
 --Brisanje tabele 
 DROP TABLE faze_projekta;
+
+--Selektovanje
+SELECT ime,prz
+    FROM radnik;
+
+--Distinct Select
+SELECT DISTINCT ime,prz
+    FROM radnik;
