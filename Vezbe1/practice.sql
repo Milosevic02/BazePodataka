@@ -10,3 +10,8 @@ CREATE TABLE faze_projekta(
     CONSTRAINT faze_projekta_fk2 FOREIGN KEY (rukfp) REFERENCES radnik (mbr),
     CONSTRAINT faze_projekta_uk UNIQUE(nafp)
 );
+
+--Dodavanje atributa u tabelu
+ALTER TABLE faze_projekta
+    ADD Datz date --datum zavrsetka
+    ADD CONSTRAINT dat_ch CHECK (datp <= datz);
