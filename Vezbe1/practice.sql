@@ -49,3 +49,24 @@ SELECT mbr,ime,prz
 SELECT ime, prz, god
 FROM radnik
 WHERE god NOT BETWEEN '01-JAN-1973' AND '31-DEC-1980';
+
+--LIKE and NOT LIKE
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE prz LIKE 'M%';
+
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE ime LIKE '_a%';
+    
+SELECT DISTINCT ime 
+    FROM radnik
+    WHERE ime LIKE 'E%';
+
+SELECT mbr, ime, prz
+    FROM radnik
+    WHERE prz LIKE '%e%' OR prz LIKE '%E%';
+    
+SELECT mbr, ime, prz
+    FROM radnik
+    WHERE ime NOT LIKE 'A%';
