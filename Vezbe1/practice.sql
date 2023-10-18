@@ -40,3 +40,12 @@ SELECT mbr,ime,prz
 SELECT mbr,ime,prz
     FROM radnik
     WHERE sef is NOT NULL;
+
+--BETWEEN and NOT BETWEEN
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE plt BETWEEN 20000 AND 24000;
+
+SELECT ime, prz, god
+FROM radnik
+WHERE god NOT BETWEEN '01-JAN-1973' AND '31-DEC-1980';
