@@ -30,4 +30,13 @@ SELECT DISTINCT ime,prz
 --SELECT with where
 SELECT mbr,ime,prz 
     FROM radnik
-    WHERE plt > 25000
+    WHERE plt > 25000;
+
+--NULL and NOT NULL
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE sef is NULL;
+    
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE sef is NOT NULL;
