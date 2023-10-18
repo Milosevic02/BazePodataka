@@ -79,3 +79,8 @@ SELECT DISTINCT mbr
 SELECT mbr, ime, prz
     FROM radnik
     WHERE ime NOT IN ('Ana','Sanja');
+
+--ORDER BY
+SELECT mbr, ime, prz, plt Plata
+    FROM radnik
+    ORDER BY Plata DESC;
