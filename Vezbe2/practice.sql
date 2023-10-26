@@ -26,3 +26,7 @@ SELECT COUNT(DISTINCT sef) broj_sefova
 --MIN and MAX
 SELECT MIN(plt) minimalna_plt, MAX(plt) maksimalna_plt
     FROM radnik;
+
+--SUM
+SELECT COUNT(mbr) "Broj radnika",SUM(plt) "Ukupna mesecna plata"
+    FROM radnik;
