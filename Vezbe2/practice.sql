@@ -22,3 +22,7 @@ SELECT COUNT(*)
 
 SELECT COUNT(DISTINCT sef) broj_sefova
     FROM radnik;
+
+--MIN and MAX
+SELECT MIN(plt) minimalna_plt, MAX(plt) maksimalna_plt
+    FROM radnik;
