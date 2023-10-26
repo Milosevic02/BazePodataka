@@ -54,3 +54,9 @@ SELECT mbr,COUNT(spr)
     FROM radproj
     GROUP BY mbr
     HAVING COUNT(spr) > 2;
+
+--Radnici u rastucem redosledu sa vecom platom od prosecne
+SELECT mbr,ime,prz,plt
+    FROM radnik
+    WHERE plt > (SELECT AVG(plt) FROM radnik)
+    ORDER BY plt ASC;
