@@ -2,3 +2,8 @@
 SELECT mbr,ime,prz,plt
     FROM radnik
     WHERE ime = ANY('Pera','Moma');
+
+--ALL
+SELECT mbr,ime,prz,plt
+    FROM radnik
+    WHERE ime != ALL('Pera','Moma');
