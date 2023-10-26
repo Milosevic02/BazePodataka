@@ -60,3 +60,11 @@ SELECT mbr,ime,prz,plt
     FROM radnik
     WHERE plt > (SELECT AVG(plt) FROM radnik)
     ORDER BY plt ASC;
+
+--Radnik na projektu 10 a da nije na projektu 30
+SELECT mbr,ime,prz
+    FROM radnik 
+    WHERE mbr IN
+        (SELECT mbr FROM radproj WHERE spr = 10)
+    AND mbr NOT IN 
+        (SELECT mbr FROM radproj WHERE spr = 30);
