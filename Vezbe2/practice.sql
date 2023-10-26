@@ -34,3 +34,8 @@ SELECT COUNT(mbr) "Broj radnika",SUM(plt) "Ukupna mesecna plata"
 --AVG 
 SELECT COUNT(*) "Broj radnika",AVG(plt) "Prosecna plata",12*SUM(plt) "Godisnja plata"
     FROM radnik;
+
+--ROUND
+SELECT ROUND(AVG(plt*1.41),2)
+    FROM radnik;
+
