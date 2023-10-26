@@ -15,3 +15,10 @@ SELECT mbr,plt + NVL(pre,0)
 --COALESCE
 SELECT COALESCE(NULL,1)
     FROM dual;
+
+--COUNT
+SELECT COUNT(*)
+    FROM radnik;
+
+SELECT COUNT(DISTINCT sef) broj_sefova
+    FROM radnik;
