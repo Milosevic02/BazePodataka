@@ -82,3 +82,8 @@ SELECT p.nap
                     WHERE mbr IN (SELECT mbr
                                     FROM radproj
                                     WHERE spr = 60));
+
+--Spajanje tabela
+ SELECT r.mbr,prz,ime,plt,brc
+    FROM radnik r,radproj
+    WHERE spr = 10 AND r.mbr = radproj.mbr;
