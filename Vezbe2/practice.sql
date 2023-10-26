@@ -43,3 +43,8 @@ SELECT ROUND(AVG(plt*1.41),2)
 SELECT mbr,plt,ROWNUM
     FROM(SELECT * FROM radnik ORDER BY plt DESC)
     WHERE ROWNUM <=10;
+
+--GROUP BY
+SELECT spr,COUNT(mbr),SUM(brc)
+    FROM radproj
+    GROUP BY spr;
