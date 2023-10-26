@@ -11,3 +11,7 @@ SELECT mbr,ime,prz,plt
 --NVL
 SELECT mbr,plt + NVL(pre,0)
     FROM radnik;
+
+--COALESCE
+SELECT COALESCE(NULL,1)
+    FROM dual;
