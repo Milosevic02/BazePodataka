@@ -118,3 +118,10 @@ SELECT p.spr,p.nap
     WHERE p.spr = rp.spr
     GROUP BY p.spr,p.nap
     HAVING COUNT(mbr) > 2;
+
+--nazive i sifre projekata na kojima je prosecno angazovanje vece od prosecnog angazovanja na svim projektima
+SELECT p.nap,p.spr
+    FROM projekat p,radproj rp
+    WHERE p.spr = rp.spr
+    GROUP BY p.spr,p.nap
+    HAVING AVG(brc) > (SELECT AVG(brc) FROM radproj);
