@@ -73,3 +73,12 @@ SELECT mbr,ime,prz
 SELECT mbr,ime,prz,god
     FROM radnik
     WHERE god = (SELECT MIN(god) FROM radnik);
+
+--Nazivi projekta na kojima radi radnik koji radi na projektu 60
+SELECT p.nap
+    FROM projekat p
+    WHERE spr in (SELECT spr
+                    FROM radproj
+                    WHERE mbr IN (SELECT mbr
+                                    FROM radproj
+                                    WHERE spr = 60));
