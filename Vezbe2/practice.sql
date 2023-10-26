@@ -98,3 +98,9 @@ SELECT r.mbr,r.prz,r.ime,COUNT(*),SUM(rp.brc)
 SELECT r.ime,r.prz
     FROM radnik r,projekat p
     WHERE r.mbr != p.ruk AND p.spr = 10;
+
+--Imena prezimena rukovodioca i broj projekata na kojima rade
+SELECT r.ime,r.prz,COUNT(rp.spr) bp
+    FROM radnik r,radproj rp
+    WHERE r.mbr = rp.mbr AND r.mbr IN (SELECT ruk FROM projekat)
+    GROUP BY r.mbr,prz,ime;
