@@ -125,3 +125,10 @@ SELECT p.nap,p.spr
     WHERE p.spr = rp.spr
     GROUP BY p.spr,p.nap
     HAVING AVG(brc) > (SELECT AVG(brc) FROM radproj);
+
+--naziv i sifre projekata sa najvecim prosecnim angazovanjem
+SELECT p.spr,p.nap
+    FROM projekat p,radproj rp
+    WHERE p.spr = rp.spr
+    GROUP BY p.spr,p.nap
+    HAVING AVG(brc) >= ALL(SELECT AVG(brc) FROM radproj GROUP BY spr);
