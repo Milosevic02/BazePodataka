@@ -39,3 +39,7 @@ SELECT COUNT(*) "Broj radnika",AVG(plt) "Prosecna plata",12*SUM(plt) "Godisnja p
 SELECT ROUND(AVG(plt*1.41),2)
     FROM radnik;
 
+--SELECT in SELECT + ROWNUM
+SELECT mbr,plt,ROWNUM
+    FROM(SELECT * FROM radnik ORDER BY plt DESC)
+    WHERE ROWNUM <=10;
