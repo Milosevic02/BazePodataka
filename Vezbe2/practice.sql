@@ -48,3 +48,9 @@ SELECT mbr,plt,ROWNUM
 SELECT spr,COUNT(mbr),SUM(brc)
     FROM radproj
     GROUP BY spr;
+
+--HAVING 
+SELECT mbr,COUNT(spr)
+    FROM radproj
+    GROUP BY mbr
+    HAVING COUNT(spr) > 2;
