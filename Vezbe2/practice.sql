@@ -87,3 +87,9 @@ SELECT p.nap
  SELECT r.mbr,prz,ime,plt,brc
     FROM radnik r,radproj
     WHERE spr = 10 AND r.mbr = radproj.mbr;
+    
+--radnika mbr,prz,ime,uk broj proj,ukupno angaz na projektima
+SELECT r.mbr,r.prz,r.ime,COUNT(*),SUM(rp.brc)
+    FROM radnik r,radproj rp
+    WHERE r.mbr = rp.mbr
+    GROUP BY r.mbr,r.prz,r.ime;
