@@ -7,3 +7,7 @@ SELECT mbr,ime,prz,plt
 SELECT mbr,ime,prz,plt
     FROM radnik
     WHERE ime != ALL('Pera','Moma');
+
+--NVL
+SELECT mbr,plt + NVL(pre,0)
+    FROM radnik;
