@@ -68,3 +68,8 @@ SELECT mbr,ime,prz
         (SELECT mbr FROM radproj WHERE spr = 10)
     AND mbr NOT IN 
         (SELECT mbr FROM radproj WHERE spr = 30);
+
+--Najmladji radnik
+SELECT mbr,ime,prz,god
+    FROM radnik
+    WHERE god = (SELECT MIN(god) FROM radnik);
