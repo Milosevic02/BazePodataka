@@ -111,3 +111,10 @@ SELECT p.nap
     WHERE p.spr = rp.spr
     GROUP BY p.spr,nap
     HAVING SUM(brc) > 15;
+
+--Sifre i nazive projekata na kojima radi vise od dva radnika
+SELECT p.spr,p.nap
+    FROM projekat p,radproj rp
+    WHERE p.spr = rp.spr
+    GROUP BY p.spr,p.nap
+    HAVING COUNT(mbr) > 2;
