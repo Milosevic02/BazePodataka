@@ -104,3 +104,10 @@ SELECT r.ime,r.prz,COUNT(rp.spr) bp
     FROM radnik r,radproj rp
     WHERE r.mbr = rp.mbr AND r.mbr IN (SELECT ruk FROM projekat)
     GROUP BY r.mbr,prz,ime;
+
+--Naziv projekata na kojima radi vise od 15 casova
+SELECT p.nap
+    FROM projekat p,radproj rp
+    WHERE p.spr = rp.spr
+    GROUP BY p.spr,nap
+    HAVING SUM(brc) > 15;
