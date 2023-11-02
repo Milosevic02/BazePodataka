@@ -68,11 +68,20 @@ SELECT mbr,ime,prz
     FROM radnik
     WHERE plt > (SELECT AVG(plt) FROM radnik);
 
---INTERSECT -> radnici sa prezimenom na M ili R i radnici sa prezimenom na M ili P
+--INTERSECT -> vraca presek
 SELECT mbr,ime,prz
     FROM radnik
     WHERE prz LIKE 'M%' OR prz LIKE 'R%'
     INTERSECT
+    SELECT mbr,ime,prz
+    FROM radnik
+    WHERE prz LIKE 'M%' OR prz LIKE 'P%';
+
+--MINUS -> unija oba skupa bez preseka
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE prz LIKE 'M%' OR prz LIKE 'R%'
+    MINUS
     SELECT mbr,ime,prz
     FROM radnik
     WHERE prz LIKE 'M%' OR prz LIKE 'P%';
