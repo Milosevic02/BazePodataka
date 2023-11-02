@@ -120,3 +120,7 @@ SELECT *
 SELECT r.mbr,r.prz,r.ime,NVL(p.spr,0) spr ,NVL(p.nap,'Ne postoji') naziv
     FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr LEFT OUTER JOIN projekat p ON rp.spr = p.spr
     ORDER BY mbr;
+
+--JOIN zad2 -> radnici koji rade na projektu
+SELECT r.mbr,ime,prz,NVL(rp.spr,0)
+    FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr;
