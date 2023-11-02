@@ -59,3 +59,11 @@ SELECT mbr,ime,prz
     FROM radnik
     WHERE plt > (SELECT AVG(plt) FROM radnik); 
                                         
+--UNION ALL -> Radnici na projektu 20 ili im je plata veca od prosecne
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE mbr IN (SELECT mbr FROM radproj WHERE spr = 20)
+    UNION ALL
+    SELECT mbr,ime,prz
+    FROM radnik
+    WHERE plt > (SELECT AVG(plt) FROM radnik);
