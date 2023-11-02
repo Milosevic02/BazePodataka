@@ -107,3 +107,7 @@ SELECT r.mbr,r.ime,r.prz,NVL(nap,'Ne rukovodi projektom') Projekat
 --RIGHT OUTER JOIN -> Zadrzava desnu tabelu i prikazuje null u levoj tabeli
 SELECT *
     FROM radproj rp RIGHT OUTER JOIN projekat p ON rp.spr = p.spr;
+
+--FULL OUTER JOIN ->
+SELECT *
+    FROM radproj rp FULL OUTER JOIN projekat p ON rp.spr = p.spr;
