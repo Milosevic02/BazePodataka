@@ -42,4 +42,10 @@ SELECT mbr,ime,prz
     WHERE NOT EXISTS (SELECT * 
                         FROM projekat p
                         WHERE r.mbr = p.ruk);                   
-                                  
+
+ --EXISTS AND NOT EXISTS zad5 -> Najmladji rukovodioc
+ SELECT DISTINCT mbr,ime,prz,god
+    FROM radnik r,projekat p 
+    WHERE r.mbr = p.ruk AND NOT EXISTS (SELECT mbr 
+                                            FROM radnik r1,projekat p1
+                                            WHERE r1.mbr = p1.ruk AND r.god < r1.god);
