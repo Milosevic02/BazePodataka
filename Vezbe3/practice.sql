@@ -130,3 +130,7 @@ SELECT r.ime,r.prz "Radnik",NVL(r1.prz,'Nema sefa') Sef
     FROM radnik r LEFT OUTER JOIN radnik r1 ON r.sef = r1.mbr
     ORDER BY r.prz;
     
+--JOIN zad4 -> Za satnicu prikazati koliko radnika radi na tom projektu sa tom satnicom
+SELECT brc,COUNT(mbr)
+FROM radproj GROUP BY brc
+ORDER BY brc DESC;
