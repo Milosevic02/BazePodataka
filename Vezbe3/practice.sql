@@ -8,3 +8,9 @@ SELECT r.ime,r.prz,r.plt,p.nap
     FROM radnik r,radnik r1,projekat p,radproj rp
     WHERE r.mbr = rp.mbr AND rp.spr = p.spr AND p.ruk = r1.mbr AND r.plt + 1000 < r1.plt;
 
+--Radnici ciji broj sati angazovanja na nekom projektu veci od prosecnog broja sati angazovanja an tom projektu
+SELECT r.mbr,r.prz,r.plt 
+    FROM radnik r,radproj rp
+    WHERE r.mbr = rp.mbr AND rp.brc > (SELECT AVG(brc) 
+                                            FROM radproj rp1
+                                            WHERE rp1.spr = rp.spr);
