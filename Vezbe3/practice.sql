@@ -143,3 +143,20 @@ SELECT mbr,ime,COUNT(spr) broj_pr_rukovodi
                                             WHERE rp.mbr = r.mbr
                                             AND prz NOT LIKE '%ic'
                                             GROUP BY r.mbr);
+
+--CASE
+SELECT mbr,ime,plt,
+CASE
+    WHEN plt < 10000 THEN 'mala primanja'
+    WHEN plt >= 10000 AND plt < 20000 THEN 'srednja primanja'
+    WHEN plt >= 20000 AND plt <40000 THEN 'visoka primanja'
+    ELSE 'izuzetno visoka primanja'
+END AS visina_primanja
+FROM radnik
+ORDER BY
+    CASE visina_primanja
+        WHEN 'izuzetno visoka primanja' THEN 1
+        WHEN 'visoka primanja' THEN 2
+        WHEN 'srednja primanja' THEN 3
+        ELSE 4
+    END DESC,plt ASC;                      
