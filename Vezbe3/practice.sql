@@ -111,3 +111,7 @@ SELECT *
 --FULL OUTER JOIN ->
 SELECT *
     FROM radproj rp FULL OUTER JOIN projekat p ON rp.spr = p.spr;
+
+--CROSS JOIN -> dekartov proizvod
+SELECT *
+    FROM radnik CROSS JOIN projekat;
