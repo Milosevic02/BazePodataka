@@ -35,5 +35,11 @@ SELECT mbr,ime,prz
     WHERE NOT EXISTS (SELECT * 
                         FROM radproj rp
                         WHERE r.mbr =  rp.mbr AND rp.spr = 10);
-                    
+
+ --EXISTS AND NOT EXISTS zad4 -> Radnici koji nisu rukovodioci
+ SELECT mbr,ime,prz
+    FROM radnik r
+    WHERE NOT EXISTS (SELECT * 
+                        FROM projekat p
+                        WHERE r.mbr = p.ruk);                   
                                   
