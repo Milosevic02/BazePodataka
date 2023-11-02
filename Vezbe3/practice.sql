@@ -115,3 +115,8 @@ SELECT *
 --CROSS JOIN -> dekartov proizvod
 SELECT *
     FROM radnik CROSS JOIN projekat;
+
+--JOIN zad1 -> radnici i projekti na kojima rade
+SELECT r.mbr,r.prz,r.ime,NVL(p.spr,0) spr ,NVL(p.nap,'Ne postoji') naziv
+    FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr LEFT OUTER JOIN projekat p ON rp.spr = p.spr
+    ORDER BY mbr;
