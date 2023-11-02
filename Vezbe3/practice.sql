@@ -124,3 +124,9 @@ SELECT r.mbr,r.prz,r.ime,NVL(p.spr,0) spr ,NVL(p.nap,'Ne postoji') naziv
 --JOIN zad2 -> radnici koji rade na projektu
 SELECT r.mbr,ime,prz,NVL(rp.spr,0)
     FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr;
+
+--JOIN zad3 -> radnici i njihovi sefovi
+SELECT r.ime,r.prz "Radnik",NVL(r1.prz,'Nema sefa') Sef
+    FROM radnik r LEFT OUTER JOIN radnik r1 ON r.sef = r1.mbr
+    ORDER BY r.prz;
+    
