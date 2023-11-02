@@ -90,3 +90,8 @@ SELECT mbr,ime,prz
 SELECT *
     FROM radnik NATURAL JOIN radproj
     WHERE spr = 30;
+
+--INNER JOIN spaja po koloni koju zadam ali dobijamo sve kolone i iz leve i iz desne tabele
+SELECT *
+    FROM radnik r INNER JOIN radproj rp ON r.mbr = rp.mbr
+    WHERE spr = 30;
