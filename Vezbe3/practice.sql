@@ -95,3 +95,7 @@ SELECT *
 SELECT *
     FROM radnik r INNER JOIN radproj rp ON r.mbr = rp.mbr
     WHERE spr = 30;
+
+--LEFT OUTER JOIN -> Lepi desnu na levu tabelu
+SELECT *
+    FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr;
