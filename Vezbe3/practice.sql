@@ -15,17 +15,25 @@ SELECT r.mbr,r.prz,r.plt
                                             FROM radproj rp1
                                             WHERE rp1.spr = rp.spr);
                                         
---EXISTS AND NOT EXISTS zad1
+--EXISTS AND NOT EXISTS zad1 -> Najstariji radnik
 SELECT ime,prz,god
     FROM radnik r
     WHERE NOT EXISTS (SELECT mbr
                         FROM radnik r1
                         WHERE r1.god < r.god);
 
---EXISTS AND NOT EXISTS zad2
+--EXISTS AND NOT EXISTS zad2 -> Radnik koji ne radi ni na jednom projektu
 SELECT ime,prz,god
     FROM radnik r
     WHERE NOT EXISTS (SELECT *
                             FROM radproj rp
                             WHERE r.mbr = rp.mbr);
-                                   
+
+--EXISTS AND NOT EXISTS zad3 -> Radnik koji ne radi na projektu 10
+SELECT mbr,ime,prz 
+    FROM radnik r
+    WHERE NOT EXISTS (SELECT * 
+                        FROM radproj rp
+                        WHERE r.mbr =  rp.mbr AND rp.spr = 10);
+                    
+                                  
