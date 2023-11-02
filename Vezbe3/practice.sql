@@ -67,3 +67,12 @@ SELECT mbr,ime,prz
     SELECT mbr,ime,prz
     FROM radnik
     WHERE plt > (SELECT AVG(plt) FROM radnik);
+
+--INTERSECT -> radnici sa prezimenom na M ili R i radnici sa prezimenom na M ili P
+SELECT mbr,ime,prz
+    FROM radnik
+    WHERE prz LIKE 'M%' OR prz LIKE 'R%'
+    INTERSECT
+    SELECT mbr,ime,prz
+    FROM radnik
+    WHERE prz LIKE 'M%' OR prz LIKE 'P%';
