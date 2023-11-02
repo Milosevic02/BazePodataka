@@ -85,3 +85,8 @@ SELECT mbr,ime,prz
     SELECT mbr,ime,prz
     FROM radnik
     WHERE prz LIKE 'M%' OR prz LIKE 'P%';
+
+--NATURAL JOIN -> ubaci celu levu tabelu i ubaci celu desnu sem kolona koja se zovu isto kao u levoj
+SELECT *
+    FROM radnik NATURAL JOIN radproj
+    WHERE spr = 30;
