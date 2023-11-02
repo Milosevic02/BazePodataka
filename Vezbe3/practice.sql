@@ -134,3 +134,12 @@ SELECT r.ime,r.prz "Radnik",NVL(r1.prz,'Nema sefa') Sef
 SELECT brc,COUNT(mbr)
 FROM radproj GROUP BY brc
 ORDER BY brc DESC;
+
+--JOIN zad5 -> radnici koji rade na manje projekata od prosecnog broja projekata na kojima rade radnici cije se prezime zavrsava na ic
+SELECT mbr,ime,COUNT(spr) broj_pr_rukovodi
+    FROM radnik r LEFT OUTER JOIN projekat p ON r.mbr = p.ruk
+    GROUP BY mbr,ime HAVING COUNT(spr) < (SELECT AVG(COUNT(spr))
+                                            FROM radproj rp,radnik r
+                                            WHERE rp.mbr = r.mbr
+                                            AND prz NOT LIKE '%ic'
+                                            GROUP BY r.mbr);
