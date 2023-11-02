@@ -49,3 +49,13 @@ SELECT mbr,ime,prz
     WHERE r.mbr = p.ruk AND NOT EXISTS (SELECT mbr 
                                             FROM radnik r1,projekat p1
                                             WHERE r1.mbr = p1.ruk AND r.god < r1.god);
+
+--UNION -> Radnici na projektu 20 ili im je plata veca od prosecne
+SELECT mbr,ime,prz
+    FROM radnik 
+    WHERE mbr IN (SELECT mbr FROM radproj WHERE spr = 20)
+    UNION
+    SELECT mbr,ime,prz
+    FROM radnik
+    WHERE plt > (SELECT AVG(plt) FROM radnik); 
+                                        
