@@ -14,3 +14,11 @@ SELECT r.mbr,r.prz,r.plt
     WHERE r.mbr = rp.mbr AND rp.brc > (SELECT AVG(brc) 
                                             FROM radproj rp1
                                             WHERE rp1.spr = rp.spr);
+                                        
+--EXISTS AND NOT EXISTS zad1
+SELECT ime,prz,god
+    FROM radnik r
+    WHERE NOT EXISTS (SELECT mbr
+                        FROM radnik r1
+                        WHERE r1.god < r.god);  
+                                   
