@@ -99,3 +99,7 @@ SELECT *
 --LEFT OUTER JOIN -> Lepi desnu na levu tabelu
 SELECT *
     FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr;
+
+--LEFT OUTER JOIN zad1 -> Ispisati ime prz mbr i naziv projekta kojim rukovodi ako ne rukovodi ni jednim ispisati ne rukovodi
+SELECT r.mbr,r.ime,r.prz,NVL(nap,'Ne rukovodi projektom') Projekat
+    FROM radnik r LEFT OUTER JOIN projekat p ON r.mbr = p.ruk;
