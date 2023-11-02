@@ -20,5 +20,12 @@ SELECT ime,prz,god
     FROM radnik r
     WHERE NOT EXISTS (SELECT mbr
                         FROM radnik r1
-                        WHERE r1.god < r.god);  
+                        WHERE r1.god < r.god);
+
+--EXISTS AND NOT EXISTS zad2
+SELECT ime,prz,god
+    FROM radnik r
+    WHERE NOT EXISTS (SELECT *
+                            FROM radproj rp
+                            WHERE r.mbr = rp.mbr);
                                    
