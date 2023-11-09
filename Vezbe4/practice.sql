@@ -164,3 +164,9 @@ SELECT TO_CHAR(god,'yyyy/mm/dd') FROM radnik;
 SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc, AVG(rp.brc) OVER() AS prosek_brc_ukupni
 FROM radnik r INNER JOIN radproj rp ON r.mbr=rp.mbr;
 
+-- OVER() -> zad2 -> Prikazati mbr, ime, prz radnika angažovanih na projektima. Pored toga, prikazati spr i brc projekata na kojima su angažovani,
+--kao i prosečno angažovanje na tom projektu
+SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc,
+    AVG(rp.brc) OVER (PARTITION BY rp.spr) AS prosek_brc_za_projekat
+    FROM radnik r INNER JOIN radproj rp ON r.mbr=rp.mbr;
+
