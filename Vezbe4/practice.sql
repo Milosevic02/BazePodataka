@@ -128,4 +128,7 @@ SELECT *
     WHERE prz LIKE
     SUBSTR(IME,0,3) || '%';
 
+--CHARACTER FUNCTION -> zad3 ->  Prikazati imena i prezimena radnika tako da se sva imena koja imaju poslednje slovo 'a', prikazuju bez poslednjeg slova.
+SELECT TRIM(TRAILING 'a' FROM ime)
+    FROM radnik;
 
