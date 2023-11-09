@@ -132,3 +132,8 @@ SELECT *
 SELECT TRIM(TRAILING 'a' FROM ime)
     FROM radnik;
 
+--CHARACTER FUNCTION -> zad4 -> Prikazati matične brojeve, spojena (konkatenirana) imena i prezimena radnika, kao i plate, uvećane za 17%.
+SELECT mbr,ime || ' ' || prz "Ime i Prezime",plt*1.17 Plata
+    FROM radnik;
+
+
