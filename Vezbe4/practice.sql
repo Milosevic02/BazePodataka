@@ -105,3 +105,12 @@ SELECT table_name FROM user_tables;
 SELECT DISTINCT object_type FROM user_objects;
 
 SELECT * FROM user_catalog;
+
+/*
+LOWER('Sva mala slova') → 'sva mala slova'
+UPPER('Sva velika slova') → 'SVA VELIKA SLOVA'
+INITCAP('Velika početna slova') → ' Velika Početna Slova'
+SUBSTR('DobroJutro', 1, 5) → 'Dobro'
+TRIM('D' FROM 'DobroJutro') → 'obroJutro'
+LENGTH('DobroJutro') → 10
+*/
