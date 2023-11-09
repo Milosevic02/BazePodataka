@@ -51,3 +51,18 @@ SELECT r.mbr,r.ime,r.prz,r.plt , AVG(rp.brc)
     WHERE r.mbr = rp.mbr AND rp.spr = pi.spr
     GROUP BY r.mbr,r.ime,r.prz,r.plt ,pi.spr
     HAVING AVG(rp.brc) > (SELECT AVG(pros) from projinfo);
+
+--WITH -> zad6 -> Koliko je ukupno angažovanje svih šefova na projektima?
+WITH angaz_po_radnicima (mbr, sbrc) AS (
+    SELECT r.mbr, nvl(SUM(rp.brc), 0)
+    FROM radnik r, radproj rp
+    WHERE r.mbr = rp.mbr (+)
+    GROUP BY r.mbr),
+angaz_sefova (mbr, prz, ime, brrad, brsat) AS (
+    SELECT distinct r.sef, r1.prz, r1.ime, count(*), a.sbrc
+    FROM radnik r, radnik r1, angaz_po_radnicima a
+    WHERE r.Sef = r1.Mbr AND r.Sef = a.Mbr
+    GROUP BY r.Sef, r1.Prz, r1.Ime, a.SBrc)
+SELECT SUM(brsat) AS ukangsef
+FROM angaz_sefova; 
+
