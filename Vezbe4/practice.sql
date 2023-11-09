@@ -28,3 +28,16 @@ SELECT ru.mbr,ru.ime,ru.prz,SUM(pi.ljudi) ljudi
     FROM rukovodilac ru,projinfo pi
     WHERE ru.spr = pi.spr
     GROUP BY ru.mbr,ru.ime,ru.prz;
+
+--WITH -> zad4 -> Prikazati mbr, ime, prz, plt radnika čiji je broj sati angažovanja na nekom projektu veći od prosečnog broja sati angažovanja na tom projektu
+WITH br_sati_projekta AS(
+    SELECT spr , AVG(brc) prosek
+        FROM radproj
+        GROUP BY spr)
+SELECT DISTINCT  r.mbr,r.ime,r.prz,r.plt,bp.spr
+    FROM radnik r,br_sati_projekta bp,radproj rp
+    WHERE r.mbr = rp.mbr AND rp.spr = bp.spr
+    GROUP BY r.mbr,r.ime,r.prz,r.plt,bp.spr
+    HAVING AVG(rp.brc) > (SELECT prosek
+                            FROM br_sati_projekta bp2
+                            WHERE bp2.spr = bp.spr);
