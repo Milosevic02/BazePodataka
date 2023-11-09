@@ -136,4 +136,7 @@ SELECT TRIM(TRAILING 'a' FROM ime)
 SELECT mbr,ime || ' ' || prz "Ime i Prezime",plt*1.17 Plata
     FROM radnik;
 
-
+--CHARACTER FUNCTION -> zad5 -> Prikazati radnike čije prezime sadrži ime. Na primer Marko Marković, ili Djordje Karadjordjevic
+SELECT * 
+    FROM radnik 
+    WHERE LOWER(prz) LIKE '%' || LOWER(ime) || '%';
