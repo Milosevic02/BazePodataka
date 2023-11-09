@@ -154,3 +154,6 @@ CONVERSION FUNCTION
 --projektu’. Imena radnika prikazati velikim slovima, a prezimena malim.
 SELECT UPPER(ime),LOWER(prz),NVL(TO_CHAR(spr),'Ne radi na projektu') broj_proj
     FROM radnik LEFT OUTER JOIN radproj ON radnik.mbr = radproj.mbr;
+
+--CONVERSION FUNCTION -> zad2 ->  Za svakog radnika prikazati datum rođenja u formatu yyyy/mm/dd.
+SELECT TO_CHAR(god,'yyyy/mm/dd') FROM radnik;
