@@ -83,3 +83,7 @@ CREATE OR REPLACE VIEW angaz_sefova(Mbr,Prz,Ime,BrRad,BrSat) AS
         FROM radnik r, radnik r1,angaz_po_radnicima a
         WHERE r.Sef = r1.mbr AND r.sef = a.mbr
         GROUP BY r.Sef, r1.Prz, r1.Ime, a.SBrc;
+
+--VIEW -> zad4 -> Koliko je ukupno angažovanje svih šefova na projektima?
+SELECT SUM(BrSat) AS Ukupno FROM angaz_sefova;
+
