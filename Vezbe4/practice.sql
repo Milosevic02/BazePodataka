@@ -87,3 +87,14 @@ CREATE OR REPLACE VIEW angaz_sefova(Mbr,Prz,Ime,BrRad,BrSat) AS
 --VIEW -> zad4 -> Koliko je ukupno angažovanje svih šefova na projektima?
 SELECT SUM(BrSat) AS Ukupno FROM angaz_sefova;
 
+--SEQUENCE 
+CREATE SEQUENCE SEQ_Mbr
+    INCREMENT BY 10
+    START WITH 240
+    NOCYCLE
+    CACHE 10;
+    
+INSERT INTO radnik (mbr,prz,ime,god)
+VALUES (SEQ_Mbr.NEXTVAL,'Napier','Sabaz',SYSDATE);
+
+SELECT SEQ_Mbr.CURRVAL FROM SYS.DUAL;
