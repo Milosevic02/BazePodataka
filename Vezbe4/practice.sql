@@ -170,11 +170,28 @@ SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc,
     AVG(rp.brc) OVER (PARTITION BY rp.spr) AS prosek_brc_za_projekat
     FROM radnik r INNER JOIN radproj rp ON r.mbr=rp.mbr;
 
--- KUMULATIVNI ZBIR zad1 -> Prikazati mbr, datum isplate, razlog isplate, isplaćeni iznos, kao i kumulativnu sumu isplaćenog iznosa od početka 2023.
+-- KUMULATIVNI ZBIR -> zad1 -> Prikazati mbr, datum isplate, razlog isplate, isplaćeni iznos, kao i kumulativnu sumu isplaćenog iznosa od početka 2023.
 --godine za radnika sa matičnim brojem 70.
 SELECT mbr,datum_isplate,razlog_isplate,iznos,
     SUM(iznos) OVER (ORDER BY datum_isplate) AS kumulativni_zbir
     FROM isplate_radnicima
     WHERE mbr = 70 AND godina = 2023
     ORDER BY datum_isplate;
+
+/*
+○ uslov_odabira_torki (engl. windowing clause)
+○ RANGE BETWEEN početna_tačka AND krajnja_tačka
+○ ROWS BETWEEN početna_tačka AND krajnja_tačka
+○ Moguće vrednosti za početnu i krajnju tačku:
+■ UNBOUNDED PRECEDING (samo početna)
+■ UNBOUNDED FOLLOWING (samo krajnja)
+■ CURRENT ROW
+*/  
+
+--KUMULATIVNI ZBIR -> zad2 ->Prikazati mbr, ime, prz radnika angažovanih na projektima. Pored toga, prikazati spr i brc projekata na kojima su angažovani,
+--kao i kumulativnu sumu broja sati rada za radnike uređene od najmlađeg do najstarijeg.
+SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc,
+    SUM(rp.brc) OVER(partition by rp.spr ORDER BY god DESC
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS kumlativni_zbir
+    FROM radnik r INNER JOIN radproj rp ON r.mbr = rp.mbr;
 
