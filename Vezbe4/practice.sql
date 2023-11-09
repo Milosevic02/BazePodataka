@@ -76,3 +76,10 @@ CREATE OR REPLACE VIEW angaz_po_radnicima (MBR,SBrc) AS
     SELECT r.mbr,NVL(SUM(rp.Brc),0)
     FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr GROUP BY r.mbr;
 
+--VIEW -> zad3 -> Napraviti pogled koji će za svakog šefa (rukovodioca radnika) prikazati njegov matični broj, prezime, ime, ukupan broj radnika
+--kojima šefuje i njegovo ukupno angažovanje na svim projektima, na kojima radi. Koristiti prethodno definisani pogled.
+CREATE OR REPLACE VIEW angaz_sefova(Mbr,Prz,Ime,BrRad,BrSat) AS
+    SELECT r.Sef,r1.prz,r1.ime,COUNT(*),a.SBrc
+        FROM radnik r, radnik r1,angaz_po_radnicima a
+        WHERE r.Sef = r1.mbr AND r.sef = a.mbr
+        GROUP BY r.Sef, r1.Prz, r1.Ime, a.SBrc;
