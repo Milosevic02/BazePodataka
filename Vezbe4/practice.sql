@@ -149,3 +149,8 @@ CONVERSION FUNCTION
     TO_DATE(char [, fmt]) – za konvertovanje niza znakova u ekvivalentni datum
     TO_NUMBER(char [,fmt]) – za konvertovanje znakovnih vrednosti u numeričke
 */
+
+-- CONVERSION FUNCTION -> zad1 -> Za svakog radnika prikazati ime, prz, i projekte na kojima radi. Ako ne radi ni na jednom projektu, napisati ‘Ne radi na
+--projektu’. Imena radnika prikazati velikim slovima, a prezimena malim.
+SELECT UPPER(ime),LOWER(prz),NVL(TO_CHAR(spr),'Ne radi na projektu') broj_proj
+    FROM radnik LEFT OUTER JOIN radproj ON radnik.mbr = radproj.mbr;
