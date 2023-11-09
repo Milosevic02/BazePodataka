@@ -113,7 +113,7 @@ CHARACTER FUNCTION:
     UPPER('Sva velika slova') → 'SVA VELIKA SLOVA'
     INITCAP('Velika početna slova') → ' Velika Početna Slova'
     SUBSTR('DobroJutro', 1, 5) → 'Dobro'
-    TRIM('D' FROM 'DobroJutro') → 'obroJutro'
+    TRIM('D' FROM 'DobroJutro') → 'obroJutro' || TRIM(TRAILING 'a' FROM Pera) -> Per
     LENGTH('DobroJutro') → 10
 */
 
@@ -121,3 +121,11 @@ CHARACTER FUNCTION:
 SELECT Mbr,Ime,Prz
     FROM radnik
     WHERE UPPER(prz) = 'PETRIC'; 
+
+--CHARACTER FUNCTION -> zad2 -> Prikazati radnike čije prezime na početku sadrži prva 3 slova imena, na primer: Petar Petric
+SELECT *
+    FROM radnik 
+    WHERE prz LIKE
+    SUBSTR(IME,0,3) || '%';
+
+
