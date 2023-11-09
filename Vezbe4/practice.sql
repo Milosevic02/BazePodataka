@@ -157,3 +157,10 @@ SELECT UPPER(ime),LOWER(prz),NVL(TO_CHAR(spr),'Ne radi na projektu') broj_proj
 
 --CONVERSION FUNCTION -> zad2 ->  Za svakog radnika prikazati datum rođenja u formatu yyyy/mm/dd.
 SELECT TO_CHAR(god,'yyyy/mm/dd') FROM radnik;
+
+-- ***ANALITIC FUNCTION***
+
+-- OVER() -> zad1 -> Svaki red ce imati istu vrednost proseka
+SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc, AVG(rp.brc) OVER() AS prosek_brc_ukupni
+FROM radnik r INNER JOIN radproj rp ON r.mbr=rp.mbr;
+
