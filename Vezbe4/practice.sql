@@ -66,3 +66,8 @@ angaz_sefova (mbr, prz, ime, brrad, brsat) AS (
 SELECT SUM(brsat) AS ukangsef
 FROM angaz_sefova; 
 
+--VIEW -> zad1 -> Napraviti pogled koji će za sve radnike prikazati samo njihova imena, prezimena i platu.
+CREATE OR REPLACE VIEW plate_radnika (Ime,Prezime,Plata) AS
+    SELECT Ime,Prz,Plt
+    FROM radnik;
+
