@@ -106,11 +106,18 @@ SELECT DISTINCT object_type FROM user_objects;
 
 SELECT * FROM user_catalog;
 
-/*
-LOWER('Sva mala slova') → 'sva mala slova'
-UPPER('Sva velika slova') → 'SVA VELIKA SLOVA'
-INITCAP('Velika početna slova') → ' Velika Početna Slova'
-SUBSTR('DobroJutro', 1, 5) → 'Dobro'
-TRIM('D' FROM 'DobroJutro') → 'obroJutro'
-LENGTH('DobroJutro') → 10
+/* 
+CHARACTER FUNCTION:
+
+    LOWER('Sva mala slova') → 'sva mala slova'
+    UPPER('Sva velika slova') → 'SVA VELIKA SLOVA'
+    INITCAP('Velika početna slova') → ' Velika Početna Slova'
+    SUBSTR('DobroJutro', 1, 5) → 'Dobro'
+    TRIM('D' FROM 'DobroJutro') → 'obroJutro'
+    LENGTH('DobroJutro') → 10
 */
+
+--CHARACTER FUNCTION -> zad1 
+SELECT Mbr,Ime,Prz
+    FROM radnik
+    WHERE UPPER(prz) = 'PETRIC'; 
