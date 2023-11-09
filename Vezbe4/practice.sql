@@ -170,3 +170,11 @@ SELECT r.mbr, r.ime, r.prz, rp.spr, rp.brc,
     AVG(rp.brc) OVER (PARTITION BY rp.spr) AS prosek_brc_za_projekat
     FROM radnik r INNER JOIN radproj rp ON r.mbr=rp.mbr;
 
+-- KUMULATIVNI ZBIR zad1 -> Prikazati mbr, datum isplate, razlog isplate, isplaćeni iznos, kao i kumulativnu sumu isplaćenog iznosa od početka 2023.
+--godine za radnika sa matičnim brojem 70.
+SELECT mbr,datum_isplate,razlog_isplate,iznos,
+    SUM(iznos) OVER (ORDER BY datum_isplate) AS kumulativni_zbir
+    FROM isplate_radnicima
+    WHERE mbr = 70 AND godina = 2023
+    ORDER BY datum_isplate;
+
