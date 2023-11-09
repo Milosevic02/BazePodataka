@@ -140,3 +140,12 @@ SELECT mbr,ime || ' ' || prz "Ime i Prezime",plt*1.17 Plata
 SELECT * 
     FROM radnik 
     WHERE LOWER(prz) LIKE '%' || LOWER(ime) || '%';
+
+/*
+CONVERSION FUNCTION
+
+    TO_CHAR(d [, fmt]) – transformiše vrednosti tipa DATE u VARCHAR2, po izboru uz navedeni format datuma
+    TO_CHAR(n [, fmt]) – transformiše vrednost brojčanog tipa u VARCHAR2, po izboru uz navedeni format broja
+    TO_DATE(char [, fmt]) – za konvertovanje niza znakova u ekvivalentni datum
+    TO_NUMBER(char [,fmt]) – za konvertovanje znakovnih vrednosti u numeričke
+*/
