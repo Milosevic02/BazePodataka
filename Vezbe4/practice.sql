@@ -71,3 +71,8 @@ CREATE OR REPLACE VIEW plate_radnika (Ime,Prezime,Plata) AS
     SELECT Ime,Prz,Plt
     FROM radnik;
 
+--VIEW -> zad2 -> Napraviti pogled koji će za sve radnike prikazati Mbr i ukupan broj sati angažovanja radnika na projektima na kojima radi.
+CREATE OR REPLACE VIEW angaz_po_radnicima (MBR,SBrc) AS
+    SELECT r.mbr,NVL(SUM(rp.Brc),0)
+    FROM radnik r LEFT OUTER JOIN radproj rp ON r.mbr = rp.mbr GROUP BY r.mbr;
+
