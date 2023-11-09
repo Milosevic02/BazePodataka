@@ -14,3 +14,17 @@ WITH projinfo AS (
 SELECT r.mbr,r.ime,r.prz,rp.spr,ROUND(rp.brc/pi.cas_suma,2) udeo
     FROM radnik r,radproj rp,projinfo pi
     WHERE r.mbr = rp.mbr AND rp.spr = pi.spr;
+
+--WITH-> zad3 ->Prikazati mbr, ime i prz rukovodilaca projekata kao i ukupan broj radnika kojima rukovode na projektima
+WITH rukovodilac AS (
+    SELECT mbr,ime,prz,plt,spr
+        FROM radnik , projekat 
+        WHERE mbr = ruk),
+    projinfo AS (
+        SELECT spr,COUNT(mbr) ljudi
+        FROM radproj
+        GROUP BY spr)
+SELECT ru.mbr,ru.ime,ru.prz,SUM(pi.ljudi) ljudi
+    FROM rukovodilac ru,projinfo pi
+    WHERE ru.spr = pi.spr
+    GROUP BY ru.mbr,ru.ime,ru.prz;
