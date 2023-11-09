@@ -41,3 +41,13 @@ SELECT DISTINCT  r.mbr,r.ime,r.prz,r.plt,bp.spr
     HAVING AVG(rp.brc) > (SELECT prosek
                             FROM br_sati_projekta bp2
                             WHERE bp2.spr = bp.spr);
+
+--WITH -> zad5 -> Prikazati mbr, ime, prz, plt radnika čiji je broj sati angažovanja na nekom projektu veći od prosečnog angažovanja na svim projektima.
+WITH projinfo AS(
+    SELECT spr, AVG(brc) pros
+        FROM radproj GROUP BY spr)
+SELECT r.mbr,r.ime,r.prz,r.plt , AVG(rp.brc)
+    FROM radnik r,radproj rp,projinfo pi
+    WHERE r.mbr = rp.mbr AND rp.spr = pi.spr
+    GROUP BY r.mbr,r.ime,r.prz,r.plt ,pi.spr
+    HAVING AVG(rp.brc) > (SELECT AVG(pros) from projinfo);
