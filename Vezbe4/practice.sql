@@ -98,3 +98,10 @@ INSERT INTO radnik (mbr,prz,ime,god)
 VALUES (SEQ_Mbr.NEXTVAL,'Napier','Sabaz',SYSDATE);
 
 SELECT SEQ_Mbr.CURRVAL FROM SYS.DUAL;
+
+--Rad sa tabelama
+SELECT table_name FROM user_tables;
+
+SELECT DISTINCT object_type FROM user_objects;
+
+SELECT * FROM user_catalog;
