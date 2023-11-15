@@ -12,3 +12,7 @@ UPDATE radnik
 SELECT mbr,ime,prz
     FROM radnik
     WHERE prz LIKE 'M%' and ime NOT LIKE 'M%';
+
+--4. Prikazati broj radnika, prosecnu mesecnu platu zaokruzenu na dve decimale i ukupnu godisnju platu svih radnika
+SELECT COUNT(mbr) radnika,ROUND(AVG(plt),2) mesecna, SUM(plt*12)
+    FROM radnik
