@@ -52,3 +52,17 @@ SELECT l.address,w.warehouse_name
     FROM locations l INNER JOIN warehouses w ON l.location_id = w.location_id
     WHERE country_id != ('US');
 
+--8. Prikazati podatke o porudžbinama (orders.order_id, orders.order_date) kao i ukupnu zaradu od porudžbine (suma razlika prodajnih i nabavnih cena prozvoda
+--pomnoženih količinom proizvoda u stavci porudžbine) za porudžbine koje imaju manje od 4 stavke.
+    --1. Nacin
+    WITH broj_stavki AS(
+        SELECT order_id, COUNT(order_id) AS broj
+            FROM order_items
+            GROUP BY order_id)
+    SELECT o.order_id,o.order_date,SUM((p.list_price-p.standard_cost)*oi.quantity) Zarada
+        FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id
+                    INNER JOIN products p ON oi.product_id = p.product_id  
+                    INNER JOIN broj_stavki bs ON oi.order_id = bs.order_id
+        WHERE bs.broj < 4
+        GROUP BY o.order_id,o.order_date;
+        
