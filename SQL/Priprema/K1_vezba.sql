@@ -10,3 +10,7 @@ SELECT product_name,description,list_price - standard_cost
     FROM products
     WHERE product_name LIKE 'Intel%';
 
+--3. Iz tabele order_items obrisati kolonu unit_price.
+ALTER TABLE order_items
+DROP COLUMN unit_price;
+
