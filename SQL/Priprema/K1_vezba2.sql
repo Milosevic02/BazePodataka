@@ -22,3 +22,10 @@ SELECT mbr,ime,prz,plt
     FROM radnik 
     WHERE plt < (SELECT AVG(plt) FROM radnik)
     ORDER BY plt DESC,ime DESC,prz DESC;
+
+--6. Izlistati nazive i sifre projekata na kojima je prosecno angazovanje vece od prosecnog angazovanja na svim projektima
+SELECT p.nap,p.spr 
+    FROM projekat p,radproj rp
+    WHERE rp.spr = p.spr 
+    GROUP BY p.spr,p.nap
+    HAVING AVG(rp.brc) > (SELECT AVG(rp2.brc) FROM radproj rp2);
