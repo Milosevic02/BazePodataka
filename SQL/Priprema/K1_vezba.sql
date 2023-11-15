@@ -65,4 +65,11 @@ SELECT l.address,w.warehouse_name
                     INNER JOIN broj_stavki bs ON oi.order_id = bs.order_id
         WHERE bs.broj < 4
         GROUP BY o.order_id,o.order_date;
-        
+
+    --2. Nacin 
+    SELECT o.order_id, o.order_date, SUM((p.list_price - p.standard_cost) * oi.quantity) AS total_profit
+    FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id
+        INNER JOIN products p ON oi.product_id = p.product_id
+    GROUP BY o.order_id, o.order_date
+    HAVING COUNT(oi.item_id) < 4;
+ 
