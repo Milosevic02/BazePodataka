@@ -27,3 +27,6 @@ UPDATE locations SET city = city || '(' || state || ')'
         WHERE employee_id = salesman_id and o.status = 'Canceled';
 
     --2.Nacin
+    SELECT first_name,last_name
+    FROM employees
+    WHERE employee_id IN (SELECT salesman_id FROM orders WHERE status = 'Canceled');
