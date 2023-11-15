@@ -22,7 +22,7 @@ UPDATE locations SET city = city || '(' || state || ')'
 --5. Prikazati imena i prezimena radnika (employees.first_name,
 --employees.last_name) koji su povezani sa narudžbinama čiji je status 'Canceled'.
     --1. Nacin
-    SELECT first_name,last_name
+    SELECT DISTINCT first_name,last_name
         FROM employees e,orders o
         WHERE employee_id = salesman_id and o.status = 'Canceled';
 
