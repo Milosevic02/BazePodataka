@@ -14,3 +14,8 @@ SELECT product_name,description,list_price - standard_cost
 ALTER TABLE order_items
 DROP COLUMN unit_price;
 
+--4. U tabeli locations izmeniti kolonu city tako da vrednosti u njoj budu u obliku
+--<city> (<state>) za lokacije koje u polju state nemaju null vrednosti.
+UPDATE locations SET city = city || '(' || state || ')'
+    WHERE state IS NOT NULL;
+
