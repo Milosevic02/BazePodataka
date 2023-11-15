@@ -29,3 +29,12 @@ SELECT p.nap,p.spr
     WHERE rp.spr = p.spr 
     GROUP BY p.spr,p.nap
     HAVING AVG(rp.brc) > (SELECT AVG(rp2.brc) FROM radproj rp2);
+
+--7. Prikazati za svakog radnika angazovanog na projektu mbr, prz, ime, spr i udeo u ukupnom broju casova rada na tom projektu (zaokruzeno na dve decimale)
+WITH projinfo AS(
+    SELECT rp.spr,SUM(rp.brc) AS cas_suma
+    FROM radproj rp
+    GROUP BY rp.spr)
+SELECT r.mbr, r.ime, r.prz, rp.spr, ROUND(rp.brc/pi.cas_suma, 2) Udeo
+    FROM radnik r,radproj rp,projinfo pi
+    WHERE r.mbr = rp.mbr and pi.spr = rp.spr;
