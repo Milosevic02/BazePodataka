@@ -44,3 +44,11 @@ UPDATE locations SET city = city || '(' || state || ')'
 SELECT first_name,last_name,job_title
     FROM employees
     WHERE employee_id NOT IN (SELECT DISTINCT manager_id FROM employees WHERE manager_id IS NOT NULL);
+
+--7. Prikazati podatke o skladištima (location.address,
+--warehouses.warehouse_name) za skladišta koja nisu u Sjedinjenim Američkim Državama.
+
+SELECT l.address,w.warehouse_name
+    FROM locations l INNER JOIN warehouses w ON l.location_id = w.location_id
+    WHERE country_id != ('US');
+
