@@ -43,3 +43,9 @@ SELECT r.mbr, r.ime, r.prz, rp.spr, ROUND(rp.brc/pi.cas_suma, 2) Udeo
 UPDATE radnik
     SET prz = SUBSTR(prz, 1, LENGTH(prz) - 1) || UPPER(SUBSTR(prz,LENGTH(prz), 1));
 
+--9. Napraviti pogled koji ce za sve radnike prikazati Mbr i ukupan broj sati angazovanja radnika na projektima na kojima radi
+CREATE OR REPLACE VIEW radinfo AS
+    SELECT r.mbr,NVL(SUM(brc),0) br_casova
+        FROM radnik r,radproj rp
+        WHERE r.mbr = rp.mbr
+        GROUP BY r.mbr;
