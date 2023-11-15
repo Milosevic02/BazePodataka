@@ -30,3 +30,10 @@ UPDATE locations SET city = city || '(' || state || ')'
     SELECT first_name,last_name
     FROM employees
     WHERE employee_id IN (SELECT salesman_id FROM orders WHERE status = 'Canceled');
+
+    --3. Nacin
+    WITH canceled_rad AS(
+        SELECT salesman_id FROM orders WHERE status = 'Canceled')
+    SELECT DISTINCT first_name,last_name
+        FROM employees,canceled_rad cr
+        WHERE employee_id = cr.salesman_id;
