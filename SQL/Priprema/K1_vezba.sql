@@ -37,3 +37,10 @@ UPDATE locations SET city = city || '(' || state || ')'
     SELECT DISTINCT first_name,last_name
         FROM employees,canceled_rad cr
         WHERE employee_id = cr.salesman_id;
+
+--6. Prikazati podatke o radnicima (employees.first_name, employees.last_name,
+--employees.job_title) koji nisu nikome nadređeni.
+
+SELECT first_name,last_name,job_title
+    FROM employees
+    WHERE employee_id NOT IN (SELECT DISTINCT manager_id FROM employees WHERE manager_id IS NOT NULL);
