@@ -73,3 +73,15 @@ SELECT l.address,w.warehouse_name
     GROUP BY o.order_id, o.order_date
     HAVING COUNT(oi.item_id) < 4;
  
+
+--9. Kreirati pogled sales_impact koji za svakog radnika (employees.employee_id, employees.first_name, employees.last_name) sa titulom 'Sales Representative'
+--prikazuje ukupnu vrednost prihoda od robe koju je prodao (suma razlika prodajnih i nabavnih cena proizvoda pomnožena količinama datih proizvoda na stavkama računa
+--izdatih od strane tog radnika). Ako radnik nije izvršio ni jednu prodaju, za ukupnu vrednost njegovih prodaja postaviti nulu.
+CREATE OR REPLACE VIEW sales_impact AS
+    SELECT   e.employee_id, e.first_name,e.last_name, NVL(SUM((p.list_price - p.standard_cost) * oi.quantity), 0) zarada
+        FROM employees e LEFT JOIN orders o ON e.employee_id = o.salesman_id
+            LEFT OUTER JOIN order_items oi ON o.order_id = oi.order_id
+            LEFT OUTER JOIN products p ON p.product_id = oi.product_id
+            WHERE job_title = 'Sales Representative'
+            GROUP BY
+                e.employee_id, e.first_name, e.last_name;
