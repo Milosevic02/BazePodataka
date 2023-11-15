@@ -85,3 +85,20 @@ CREATE OR REPLACE VIEW sales_impact AS
             WHERE job_title = 'Sales Representative'
             GROUP BY
                 e.employee_id, e.first_name, e.last_name;
+
+--10. Prikazati skladišta i kategorije proizvoda (categories.category_name, warehouses.warehouse_name) kao i prosečnu cenu proizvoda date kategorije u
+--određenom skladištu (ukupna vrednost svih proizvoda određene kategorije u skladištu podeljena njihovim brojem) zaokruženu na 3 decimale za one parove skladište 
+--kategorija proizvoda kojima je prosečna cena proizvoda posmatrane kategorije veća od generalne prosečne cene date kategorije proizvoda u svim skladištima.
+WITH prosek_svih AS(
+    SELECT p2.category_id,ROUND(AVG(p2.list_price),3) AS cena_svih
+                        FROM products p2, product_categories pc
+                        WHERE p2.category_id = pc.category_id
+                        GROUP BY p2.category_id)
+SELECT c.category_name,w.warehouse_name,ROUND(AVG(p.list_price),3) prosek
+    FROM products p 
+        INNER JOIN product_categories c ON p.category_id = c.category_id
+        INNER JOIN inventories i ON p.product_id = i.product_id 
+        INNER JOIN warehouses w ON i.warehouse_id = w.warehouse_id
+        INNER JOIN prosek_svih ps ON ps.category_id = p.category_id
+    GROUP BY w.warehouse_name,c.category_name,cena_svih
+    HAVING ROUND(AVG(p.list_price),3) > ps.cena_svih;
