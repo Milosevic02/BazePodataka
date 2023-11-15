@@ -38,3 +38,8 @@ WITH projinfo AS(
 SELECT r.mbr, r.ime, r.prz, rp.spr, ROUND(rp.brc/pi.cas_suma, 2) Udeo
     FROM radnik r,radproj rp,projinfo pi
     WHERE r.mbr = rp.mbr and pi.spr = rp.spr;
+
+--8. Svim radnicima promeniti prezime tako da poslednje slovo bude uvecano. Primer AnA -> AnA, Markovic -> MarkoviC
+UPDATE radnik
+    SET prz = SUBSTR(prz, 1, LENGTH(prz) - 1) || UPPER(SUBSTR(prz,LENGTH(prz), 1));
+
