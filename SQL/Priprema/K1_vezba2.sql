@@ -16,3 +16,9 @@ SELECT mbr,ime,prz
 --4. Prikazati broj radnika, prosecnu mesecnu platu zaokruzenu na dve decimale i ukupnu godisnju platu svih radnika
 SELECT COUNT(mbr) radnika,ROUND(AVG(plt),2) mesecna, SUM(plt*12)
     FROM radnik
+
+--5. Izlistati u opadajucem redosledu plate, mbr, ime, prz i plt radnika koji imaju platu manju od prosecne
+SELECT mbr,ime,prz,plt 
+    FROM radnik 
+    WHERE plt < (SELECT AVG(plt) FROM radnik)
+    ORDER BY plt DESC,ime DESC,prz DESC;
