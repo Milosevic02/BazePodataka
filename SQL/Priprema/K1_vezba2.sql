@@ -49,3 +49,13 @@ CREATE OR REPLACE VIEW radinfo AS
         FROM radnik r,radproj rp
         WHERE r.mbr = rp.mbr
         GROUP BY r.mbr;
+
+--10. Za svakog radnika prikazati maticni broj, ime, prezime, kao i broj projekata kojima rukovodi, pri cemu je potrebno prikazati
+--iskljucivo one radnike koji su rukovodioci na vecem broju projekata od prosecnog broja projekata na kojima rade radnici cije se prezime zavrsava na "ic"
+SELECT mbr, ime, COUNT(spr) br_pr_rukovodi
+    FROM radnik r LEFT OUTER JOIN  projekat p on r.mbr=p.ruk
+    GROUP BY mbr, ime
+    HAVING COUNT(spr) > (SELECT AVG(COUNT(spr))
+                            FROM radproj rp, radnik r
+                            WHERE rp.mbr = r.mbr and prz LIKE '%ic'
+                            GROUP BY r.mbr);
