@@ -28,3 +28,10 @@ SELECT k.korimek,k.imek,przk ,o.ocenao
         INNER JOIN ocena o ON f.idf = o.filmo
         INNER JOIN korisnik k ON o.korimeo = k.korimek 
     WHERE f.zanrf = 20;
+
+--6. Prikazati sve korisnike (KORIMEK, IMEK, PRZK) koji su ocenili film sa nazivom Pokajanje, ali nisu ocenili film sa nazivom Grdana.
+SELECT k.korimek,k.imek,przk
+    FROM korisnik k INNER JOIN ocena o ON korimeo = korimek
+        INNER JOIN film f ON idf = filmo
+    WHERE nazivf = 'Pokajanje' AND korimeo NOT IN (SELECT o2.korimeo FROM ocena o2 WHERE filmo = 5)
+    
