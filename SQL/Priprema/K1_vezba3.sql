@@ -20,3 +20,11 @@ SELECT DISTINCT korimek,imek,przk
     FROM film f INNER JOIN ocena o ON idf = filmo
             INNER JOIN korisnik k ON korimeo = korimek
     WHERE f.godf > (SELECT AVG(f2.godf) FROM film f2)
+
+--5. Za svakog korisnika (KORIMEK, IMEK, PRZK) izlistati nazive svih filmova žanra Romantični koje je ocenio. Prikazati i ocene koje je korisnik
+--dodelio ovim filmovima. Rezultate sortirati u opadajućem redosledu po korisničkom imenu.
+SELECT k.korimek,k.imek,przk ,o.ocenao
+    FROM film f 
+        INNER JOIN ocena o ON f.idf = o.filmo
+        INNER JOIN korisnik k ON o.korimeo = k.korimek 
+    WHERE f.zanrf = 20;
