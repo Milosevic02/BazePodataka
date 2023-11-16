@@ -7,3 +7,13 @@ SELECT idd,nazivd
 SELECT idv,imev,prezv
     FROM vozac
     WHERE imev LIKE '%n%' OR imev LIKE '%L%';
+
+--3. U tabelu Staza, dodati kolone GEO_SIRINA i GEO_DUZINA koje predstavljaju decimalnu predstavu geografke širine i dužine na kojima se staza
+-- nalazi. Kao podrazumevanu vrednost kolona postaviti nedostajuću vrednost NULL.
+ALTER TABLE staza
+ADD(geo_sirina DECIMAL(10,8) DEFAULT NULL);
+
+ALTER TABLE staza
+ADD(geo_duzina DECIMAL(11,8) DEFAULT NULL);
+
+
