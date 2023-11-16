@@ -40,3 +40,11 @@ SELECT DISTINCT s.*
                                                                 JOIN Vozac V1 ON S1.DRZS = V1.DRZV
                                                                 JOIN Drzava D2 ON V1.DRZV = D2.IDD
                                                                 WHERE D2.NAZIVD = 'Finland');
+
+--7. Za svaku stazu (IDS, NAZIVS) prikazati broj različitih pobednika. Prikazati samo one staze na kojima su pobeđivala najviše dva različita
+--vozača. Za staze za koje nisu uneseni rezultati prikazati 0.                                                           
+SELECT ids,nazivs,COUNT(DISTINCT vozacr)
+    FROM staza LEFT OUTER JOIN rezultat ON ids = stazar
+    WHERE plasman = 1
+    GROUP BY ids,nazivs
+    HAVING COUNT(DISTINCT vozacr) < 2;
