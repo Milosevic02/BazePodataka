@@ -42,3 +42,8 @@ SELECT korimek,imek,przk
         LEFT OUTER JOIN film f ON idf = filmo
     GROUP BY korimek,imek,przk
     HAVING COUNT(DISTINCT zanrf) < 3;
+    
+--8. Svim filmovima izmeniti nazive tako da početno slovo svake reči bude veliko. Sva ostala slova treba da budu mala.
+SELECT nazivf 
+    FROM film
+    WHERE nazivf = initcap(nazivf);
