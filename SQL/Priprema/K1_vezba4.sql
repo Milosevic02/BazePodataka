@@ -23,3 +23,9 @@ SELECT DISTINCT ids,nazivs,drzs
         INNER JOIN vozac ON idv = vozacr
     WHERE sezona = 2019 AND bodovi < (SELECT AVG(bodovi) FROM rezultat WHERE sezona = 2019);
 
+--5. Prikazati sve staze (idenfikaciona oznaka staze, naziv staze i naziv države u kojoj se staza nalazi) na kojim je barem jednom pobedio domaći
+--vozač (vozač koji nastupa za istu državu u kojoj se staza nalazi). Ukoliko je na nekoj stazi više sezona pobedio domaći vozač, stazu prikazati samo jednom.
+SELECT DISTINCT ids,nazivs,drzs
+    FROM staza INNER JOIN rezultat ON ids = stazar
+        INNER JOIN vozac ON idv = vozacr
+    WHERE drzv = drzs AND plasman = 1;
