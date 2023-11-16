@@ -52,3 +52,12 @@ SELECT ids,nazivs,COUNT(DISTINCT vozacr)
 --8. Promeniti naziv staze tako da svako slovo u nazivu bude veliko, osim poslednjeg slova.
 UPDATE staza    
     SET nazivs = UPPER(SUBSTR(nazivs,1,LENGTH(nazivs) - 1)) || SUBSTR(nazivs,LENGTH(nazivs),1)
+
+--9. Kreirati pogled Pogled_Drzava_Nastupi koji za državu (IDD, NAZIVD) prikazuje ukupan broj nastupa vozača države na trkama. Pogled treba da
+--prikazuje podatke samo za države u kojima postoji barem jedna staza. Ukoliko za državu nije zabeležen nastup nijednog njenog vozača, prikazati da je ukupan broj nastupa vozača za tu državu 0.
+CREATE OR REPLACE VIEW Pogled_Drzava_Nastupi AS
+    SELECT idd,nazivd,NVL(COUNT(vozacr),0) br_vozaca
+        FROM drzava LEFT OUTER JOIN vozac ON drzv = idd
+            LEFT OUTER JOIN rezultat ON vozacr = idv
+        WHERE drzv IN (SELECT drzs FROM staza)
+        GROUP BY idd,nazivd;
