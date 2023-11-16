@@ -29,3 +29,14 @@ SELECT DISTINCT ids,nazivs,drzs
     FROM staza INNER JOIN rezultat ON ids = stazar
         INNER JOIN vozac ON idv = vozacr
     WHERE drzv = drzs AND plasman = 1;
+
+--6. Prikazati sve staze na kojima je nastupao barem jedan vozač koji nastupa za državu sa nazivom Germany, a nije nastupao ni jedan vozač koji nastupa za državu sa nazivom Finland. 
+SELECT DISTINCT s.* 
+    FROM staza s
+        INNER JOIN vozac ON drzs = drzv
+        INNER JOIN drzava d1 ON drzv = d1.idd
+        WHERE d1.nazivd = 'Germany' AND ids NOT IN (SELECT s1.ids
+                                                        FROM staza s1
+                                                                JOIN Vozac V1 ON S1.DRZS = V1.DRZV
+                                                                JOIN Drzava D2 ON V1.DRZV = D2.IDD
+                                                                WHERE D2.NAZIVD = 'Finland');
