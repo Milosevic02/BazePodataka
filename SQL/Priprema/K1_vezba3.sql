@@ -47,3 +47,12 @@ SELECT korimek,imek,przk
 SELECT nazivf 
     FROM film
     WHERE nazivf = initcap(nazivf);
+
+--9. Kreirati pogled Prosecne_Ocene_Po_Zanru koji će za svaki žanr (IDZ, NAZIVZ) prikazati prosečnu ocenu filmova toga žanra. Prosečnu ocenu
+--zaokružiti na dve decimale. Za žanrove za koje ne postoji ocenjeni filmovi, prikazati ocenu 0.
+CREATE OR REPLACE VIEW Prosecne_Ocene_Po_Zanru AS
+        SELECT idz, nazivz,ROUND(NVL(AVG(ocenao),0),2) prosek
+            FROM film f 
+                RIGHT OUTER JOIN zanr z ON idz = zanrf
+                LEFT OUTER JOIN ocena o ON filmo = idf
+            GROUP BY idz,nazivz;
