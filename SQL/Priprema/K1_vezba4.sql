@@ -48,3 +48,7 @@ SELECT ids,nazivs,COUNT(DISTINCT vozacr)
     WHERE plasman = 1
     GROUP BY ids,nazivs
     HAVING COUNT(DISTINCT vozacr) < 2;
+
+--8. Promeniti naziv staze tako da svako slovo u nazivu bude veliko, osim poslednjeg slova.
+UPDATE staza    
+    SET nazivs = UPPER(SUBSTR(nazivs,1,LENGTH(nazivs) - 1)) || SUBSTR(nazivs,LENGTH(nazivs),1)
