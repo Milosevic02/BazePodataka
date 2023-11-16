@@ -34,4 +34,11 @@ SELECT k.korimek,k.imek,przk
     FROM korisnik k INNER JOIN ocena o ON korimeo = korimek
         INNER JOIN film f ON idf = filmo
     WHERE nazivf = 'Pokajanje' AND korimeo NOT IN (SELECT o2.korimeo FROM ocena o2 WHERE filmo = 5)
-    
+
+--7. Prikazati sve korisnike (KORIMEK, IMEK, PRZK) čije ocene filmova obuhvataju najviše dva različita žanra. 
+--Rezultat treba da uključi i korisnike koji nisu ocenili ni jedan film.
+SELECT korimek,imek,przk 
+    FROM korisnik k LEFT OUTER JOIN ocena o ON korimeo = korimek
+        LEFT OUTER JOIN film f ON idf = filmo
+    GROUP BY korimek,imek,przk
+    HAVING COUNT(DISTINCT zanrf) < 3;
