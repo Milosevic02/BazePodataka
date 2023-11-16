@@ -56,3 +56,21 @@ CREATE OR REPLACE VIEW Prosecne_Ocene_Po_Zanru AS
                 RIGHT OUTER JOIN zanr z ON idz = zanrf
                 LEFT OUTER JOIN ocena o ON filmo = idf
             GROUP BY idz,nazivz;
+
+--10. Za svaki žanr (IDZ, NAZIVZ) prikazati ukupan broj filmova, broj filmova koji traju duže od 100 minuta
+--i broj filmova čije trajanje je manje ili jednako 100 minuta. Prikazati i žanrove za koje ne postoje uneseni filmovi.
+WITH filmovi_vise AS(
+    SELECT idz,idf
+        FROM zanr LEFT OUTER JOIN film ON idz = zanrf
+        WHERE trajanjef > 100 OR trajanjef IS NULL
+      ),
+filmovi_manje AS(
+    SELECT idz,idf 
+        FROM zanr LEFT OUTER JOIN film ON idz = zanrf
+        WHERE trajanjef <= 100 OR trajanjef IS NULL)
+SELECT z.idz,z.nazivz,COUNT(DISTINCT f.idf) as ukupno_filmova,COUNT(DISTINCT fv.idf) as duzih,COUNT(DISTINCT fm.idf) as kracih
+    FROM zanr z 
+            LEFT OUTER JOIN film f ON z.idz = zanrf
+            LEFT OUTER JOIN filmovi_vise fv ON fv.idz = z.idz
+            LEFT OUTER JOIN filmovi_manje fm ON fm.idz = z.idz
+    GROUP BY z.idz,nazivz;
