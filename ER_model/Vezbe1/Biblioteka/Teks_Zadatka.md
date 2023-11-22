@@ -30,32 +30,19 @@ identifikovanog skupa obeležja. Tekstualni opis:
     ● Obezbediti čuvanje evidencije o svim plaćanjima članova.
 
 
-| Mnemonik | Pun opis                    |              
-|----------|-----------------------------|
-| NAZIVB   | Naziv biblioteke            |
-| ADRESA   | Adresa biblioteke           |
-| BRTEL    | Broj telefona biblioteke    |
-| IDK      | Identifikacioni broj knjige |
-| NAZK     | Naziv knjige                |
-| IDAUTOR  | Identifikacioni broj autora |
-| IMEA     | Ime autora                  |
-| PREZA    | Prezime autora              |
-| DATUMR   | Datum rođenja autora        |
-| DATUMS   | Datum smrti autora (opciono)|
-| NAZKATK  | Naziv kategorije knjige     |
+| Mnemonik | Pun opis                    | Mnemonik | Pun opis                          |
+|----------|-----------------------------|----------|----------------------------------|
+| NAZIVB   | Naziv biblioteke            | CLBROJ   | Članski broj člana biblioteke      |
+| ADRESA   | Adresa biblioteke           | IMECL    | Ime člana biblioteke              |
+| BRTEL    | Broj telefona biblioteke    | PRZCL    | Prezime člana biblioteke          |
+| IDK      | Identifikacioni broj knjige | ADRCL    | Adresa člana biblioteke           |
+| NAZK     | Naziv knjige                | BRTELCL  | Broj telefona člana biblioteke    |
+| IDAUTOR  | Identifikacioni broj autora | DATIZN   | Datum iznajmljivanja knjige       |
+| IMEA     | Ime autora                  | NAZKATCL | Naziv kategorije člana biblioteke |
+| PREZA    | Prezime autora              | VISCLAN  | Visina mesečne članarine          |
+| DATUMR   | Datum rođenja autora        | IZNOS    | Iznos uplate članarine            |
+| DATUMS   | Datum smrti autora (opciono)| DATUMPL  | Datum plaćanja članarine          |
+| NAZKATK  | Naziv kategorije knjige     |          |                                  |
 
-
-| Mnemonik | Pun opis                          |
-|----------|----------------------------------|
-| CLBROJ   | Članski broj člana biblioteke      |
-| IMECL    | Ime člana biblioteke              |
-| PRZCL    | Prezime člana biblioteke          |
-| ADRCL    | Adresa člana biblioteke           |
-| BRTELCL  | Broj telefona člana biblioteke    |
-| DATIZN   | Datum iznajmljivanja knjige       |
-| NAZKATCL | Naziv kategorije člana biblioteke |
-| VISCLAN  | Visina mesečne članarine          |
-| IZNOS    | Iznos uplate članarine            |
-| DATUMPL  | Datum plaćanja članarine          |
 
 
