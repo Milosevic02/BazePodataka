@@ -1,0 +1,17 @@
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe.config
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.pdb
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csprojAssemblyReference.cache
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CopyComplete
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.exe
+C:\Users\Aleksandar\source\repos\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.pdb
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe.config
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.pdb
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\bin\Debug\Oracle.ManagedDataAccess.dll
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.AssemblyReference.cache
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CoreCompileInputs.cache
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CopyComplete
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.exe
+S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.pdb
