@@ -18,7 +18,18 @@ namespace ODP_NET_Theatre.ConnectionPool
             if (instance == null || instance.State == System.Data.ConnectionState.Closed)
             {
 
-                //TODO
+                OracleConnectionStringBuilder ocsb = new OracleConnectionStringBuilder();
+                ocsb.DataSource = Connection.ConnectionParams.DATA_SOURCE;
+                ocsb.UserID = Connection.ConnectionParams.USER_ID;
+                ocsb.Password = Connection.ConnectionParams.PASSWORD;
+                //Pooling
+                ocsb.Pooling = true;
+                ocsb.MinPoolSize = 1;
+                ocsb.MaxPoolSize = 10;
+                ocsb.IncrPoolSize = 3;
+                ocsb.ConnectionLifeTime = 5;
+                ocsb.ConnectionTimeout = 30;
+                instance = new OracleConnection(ocsb.ConnectionString);
 
             }
             return instance;
@@ -26,7 +37,11 @@ namespace ODP_NET_Theatre.ConnectionPool
 
         public void Dispose()
         {
-            //TODO
+            if(instance != null)
+            {
+                instance.Close();
+                instance.Dispose();
+            }
 
         }
     }

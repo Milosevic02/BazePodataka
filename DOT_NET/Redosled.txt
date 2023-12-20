@@ -1,0 +1,3 @@
+- Podaci za konekciju sa sql developer
+- Napravi konekciju i ConnectionPool
+- Inicijalizujem sta treba u DTO

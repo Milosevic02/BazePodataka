@@ -10,6 +10,7 @@ namespace ODP_NET_Theatre.UIHandler
 {
     public class ComplexQueryUIHandler
     {
+
         public void HandleMenu()
         {
             String answer;
