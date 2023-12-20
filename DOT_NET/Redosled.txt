@@ -1,3 +1,4 @@
-- Podaci za konekciju sa sql developer
-- Napravi konekciju i ConnectionPool
-- Inicijalizujem sta treba u DTO
+1. Napravi Konekciju
+2. Implementirati sve klase ICRUD i neke po potrebi
+3. Complex Query
+4.Transakcija

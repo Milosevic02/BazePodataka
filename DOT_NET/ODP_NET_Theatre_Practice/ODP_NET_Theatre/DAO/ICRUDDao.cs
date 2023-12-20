@@ -6,7 +6,7 @@ namespace ODP_NET_Theatre.DAO
     {
         int Count();
 
-        void DeleteById(ID id);
+        int DeleteById(ID id);
 
         bool ExistsById(ID id);
 

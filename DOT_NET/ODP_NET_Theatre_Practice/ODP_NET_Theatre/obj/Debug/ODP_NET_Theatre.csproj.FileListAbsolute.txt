@@ -15,3 +15,12 @@ S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_The
 S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CopyComplete
 S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.exe
 S:\03_BP1_ODP_NET_Template\ODP_NET_Theatre\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.pdb
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.AssemblyReference.cache
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CoreCompileInputs.cache
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.exe
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.pdb
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe.config
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.exe
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\bin\Debug\ODP_NET_Theatre.pdb
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Theatre_Practice\ODP_NET_Theatre\obj\Debug\ODP_NET_Theatre.csproj.CopyComplete

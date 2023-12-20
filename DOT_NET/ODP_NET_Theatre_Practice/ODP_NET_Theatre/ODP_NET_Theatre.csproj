@@ -49,6 +49,11 @@
     <Compile Include="Connection\ConnectionParams.cs" />
     <Compile Include="Connection\ConnectionUtil_Pooling.cs" />
     <Compile Include="DAO\ICRUDDao.cs" />
+    <Compile Include="DAO\Impl\SceneDAOImpl.cs" />
+    <Compile Include="DAO\Impl\TheatreDAOImpl.cs" />
+    <Compile Include="DAO\ISceneDAO.cs" />
+    <Compile Include="DAO\ITheatreDAO.cs" />
+    <Compile Include="DTO\ComplexQuery1\ScenesForTheatreDTO.cs" />
     <Compile Include="Model\Actor.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\Theatre.cs" />
@@ -58,6 +63,7 @@
     <Compile Include="Model\Part.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ComplexFuncionalityService.cs" />
     <Compile Include="Service\TheatreService.cs" />
     <Compile Include="Service\PlayService.cs" />
     <Compile Include="Service\ShowingService.cs" />
@@ -77,9 +83,6 @@
     <Content Include="Resources\inserts.sql" />
     <Content Include="Resources\tables.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAO\Impl\" />
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
