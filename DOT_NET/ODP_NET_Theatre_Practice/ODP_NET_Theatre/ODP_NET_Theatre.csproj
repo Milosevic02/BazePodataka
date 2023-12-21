@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Connection\ConnectionParams.cs" />
     <Compile Include="Connection\ConnectionUtil_Pooling.cs" />
+    <Compile Include="Connection\Kolokvijum.cs" />
     <Compile Include="DAO\ICRUDDao.cs" />
     <Compile Include="DAO\Impl\PlayDAOImpl.cs" />
     <Compile Include="DAO\Impl\RoleDAOImpl.cs" />

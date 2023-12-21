@@ -28,7 +28,7 @@ namespace ODP_NET_Concepts
                 ConnectionPool.Example01_ConnectionPool.Example,    //  14
             };
 
-            examples[14].Invoke();
+            examples[13].Invoke();
 
             Console.WriteLine("Press any key...");
             Console.ReadKey();

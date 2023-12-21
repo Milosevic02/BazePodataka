@@ -23,3 +23,12 @@ C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BP_03_
 C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BP_03_ODB_NET_Concepts\03_BP1_ODP_NET_Concepts\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.csproj.CopyComplete
 C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BP_03_ODB_NET_Concepts\03_BP1_ODP_NET_Concepts\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.exe
 C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BP_03_ODB_NET_Concepts\03_BP1_ODP_NET_Concepts\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.pdb
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\bin\Debug\ODP_NET_Concepts.exe.config
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\bin\Debug\ODP_NET_Concepts.exe
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\bin\Debug\ODP_NET_Concepts.pdb
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.csproj.AssemblyReference.cache
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.csproj.CoreCompileInputs.cache
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.csproj.CopyComplete
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.exe
+C:\Users\milos\OneDrive\Documents\Faculty\5. Semestar\Baze podataka\Vezbe\BazePodataka\DOT_NET\ODP_NET_Concepts\ODP_NET_Concepts\obj\Debug\ODP_NET_Concepts.pdb
