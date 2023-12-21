@@ -49,11 +49,17 @@
     <Compile Include="Connection\ConnectionParams.cs" />
     <Compile Include="Connection\ConnectionUtil_Pooling.cs" />
     <Compile Include="DAO\ICRUDDao.cs" />
+    <Compile Include="DAO\Impl\PlayDAOImpl.cs" />
     <Compile Include="DAO\Impl\SceneDAOImpl.cs" />
+    <Compile Include="DAO\Impl\ShowingDAOImpl.cs" />
     <Compile Include="DAO\Impl\TheatreDAOImpl.cs" />
+    <Compile Include="DAO\IPlayDAO.cs" />
     <Compile Include="DAO\ISceneDAO.cs" />
     <Compile Include="DAO\ITheatreDAO.cs" />
+    <Compile Include="DAO\IShowingDAO.cs" />
     <Compile Include="DTO\ComplexQuery1\ScenesForTheatreDTO.cs" />
+    <Compile Include="DTO\ComplexQuery2\PlayShowingsStatsDTO.cs" />
+    <Compile Include="DTO\ComplexQuery2\ShowingsForPlayDTO.cs" />
     <Compile Include="Model\Actor.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\Theatre.cs" />

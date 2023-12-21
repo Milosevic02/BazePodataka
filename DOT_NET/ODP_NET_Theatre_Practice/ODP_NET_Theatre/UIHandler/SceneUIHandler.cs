@@ -1,4 +1,6 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using ODP_NET_Theatre.Model;
+using ODP_NET_Theatre.Service;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -10,6 +12,7 @@ namespace ODP_NET_Theatre.UIHandler
 {
     public class SceneUIHandler
     {
+        private static SceneService sceneService = new SceneService();
         public void HandleMenu()
         {
             string answer;
@@ -17,11 +20,7 @@ namespace ODP_NET_Theatre.UIHandler
             {
                 Console.WriteLine();
                 Console.WriteLine("Odaberite funkcionalnost:");
-                Console.WriteLine("1  - Prikaz svih");
-                Console.WriteLine("2  - Prikaz po identifikatoru");
-                Console.WriteLine("3  - Unos jednog");
-                Console.WriteLine("4  - Izmena po identifikatoru");
-                Console.WriteLine("5  - Brisanje po identifikatoru");
+                Console.WriteLine("1  - Prikaz svih po Theatre id");
                 Console.WriteLine("X  - Povratak u prethodni meni");
 
                 answer = Console.ReadLine();
@@ -29,49 +28,38 @@ namespace ODP_NET_Theatre.UIHandler
                 switch (answer)
                 {
                     case "1":
-                        ShowAll();
+                        ShowAllByTheatreId();
                         break;
-                    case "2":
-                        ShowById();
-                        break;
-                    case "3":
-                        HandleSingleInsert();
-                        break;
-                    case "4":
-                        HandleUpdate();
-                        break;
-                    case "5":
-                        HandleDelete();
-                        break;
+                   
                 }
 
             } while (!answer.ToUpper().Equals("X"));
         }
 
-        private void ShowAll()
+        private void ShowAllByTheatreId()
         {
+            Console.WriteLine("IDTHE: ");
+            int id = int.Parse(Console.ReadLine());
 
+            try
+            {
+                List<Scene> scenes = sceneService.FindSceneByTheatre(id);
+
+                foreach (Scene scene in scenes)
+                {
+                    Console.WriteLine(Scene.GetFormattedHeader());
+                    Console.WriteLine(scene);
+                }
+
+                
+            }
+            catch (DbException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
-        private void ShowById()
-        {
-
-        }
-
-        private void HandleSingleInsert()
-        {
-
-        }
-
-        private void HandleUpdate()
-        {
-
-        }
-
-        private void HandleDelete()
-        {
-
-        }
+        
 
     }
 }

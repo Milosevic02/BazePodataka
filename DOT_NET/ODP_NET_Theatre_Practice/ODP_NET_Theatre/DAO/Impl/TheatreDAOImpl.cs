@@ -128,7 +128,7 @@ namespace ODP_NET_Theatre.DAO.Impl
             return theatre;
         }
 
-        public void Save(Theatre theatre)
+        public int Save(Theatre theatre)
         {
             string insertSql = "insert into theatre (name_th, address_th, website_th, place_id_pl, id_th) " +
                 "values (:name_th, :address_th , :website_th, :place_id_pl, :id_th)";
@@ -151,7 +151,7 @@ namespace ODP_NET_Theatre.DAO.Impl
                     ParameterUtil.SetParameterValue(command, "address_th", theatre.AddressTh);
                     ParameterUtil.SetParameterValue(command, "website_th", theatre.WebsiteTh);
                     ParameterUtil.SetParameterValue(command, "place_id_pl", theatre.PlaceIdPl);
-                    command.ExecuteNonQuery();
+                    return command.ExecuteNonQuery();
 
                 }
             }

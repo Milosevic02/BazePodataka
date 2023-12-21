@@ -1,4 +1,5 @@
 ﻿using ODP_NET_Theatre.DTO.ComplexQuery1;
+using ODP_NET_Theatre.DTO.ComplexQuery2;
 using ODP_NET_Theatre.Model;
 using ODP_NET_Theatre.Service;
 using Oracle.ManagedDataAccess.Client;
@@ -22,8 +23,10 @@ namespace ODP_NET_Theatre.UIHandler
             do
             {
                 Console.WriteLine("\n1  - Za svako pozoriste prikazati listu scene koje ima. Ukoliko pozoriste nema scenu ispisati: NEMA SCENE");
-                Console.WriteLine("\n2  - X");
-                Console.WriteLine("\n3  - X");
+                Console.WriteLine(
+                      "\n2  - Prikazati informacije o predstavama koje se prikazuju. Pored osnovnih informacija o predstavama prikazati sva prikazivanja"
+                          + "\n     za svaku od njih. Za svaku predstavu prikazati ukupan broj gledalaca, prosecan broj gledalaca i broj prikazivanja.");
+
 
                 Console.WriteLine("\nX  - Izlazak iz kompleksnih upita");
 
@@ -35,7 +38,7 @@ namespace ODP_NET_Theatre.UIHandler
                         ShowSceneForTheatre();
                         break;
                     case "2":
-                        // TODO:
+                        ShowReportingForShowingShows();
                         break;
                     case "3":
                         // TODO:
@@ -82,6 +85,34 @@ namespace ODP_NET_Theatre.UIHandler
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public void ShowReportingForShowingShows()
+        {
+            try
+            {
+                foreach(ShowingsForPlayDTO dto in complexQueryService.GetShowingsForPlayDTO())
+                {
+                    String statsHeader = String.Format("{0,-30} {1,-30:F2} {2,-30}", "UKUPAN BROJ GLEDALACA", "PROSECAN BROJ GLEDALACA", "BROJ PRIKAZIVANJA");
+                    Console.WriteLine(Play.GetFormattedHeader() + " " + statsHeader);
+                    Console.WriteLine(dto.Play + " " + dto.Stats);
+
+                    Console.WriteLine("\t\t---------------------------PRIKAZIVANJA----------------------------------");
+                    Console.WriteLine("\t\t" + Showing.GetFormattedHeader());
+                    foreach (Showing showing in dto.Showings)
+                    {
+                        Console.WriteLine("\t\t" + showing);
+                    }
+                    Console.WriteLine("\t\t-------------------------------------------------------------------------");
+                    Console.WriteLine("\n\n");
+                }
+
+            }
+            catch (DbException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
     }

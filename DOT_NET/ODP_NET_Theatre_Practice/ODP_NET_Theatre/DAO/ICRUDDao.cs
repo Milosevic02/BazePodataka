@@ -14,7 +14,7 @@ namespace ODP_NET_Theatre.DAO
 
         T FindById(ID id);
 
-        void Save(T entity);
+        int Save(T entity);
 
     }
 }

@@ -9,11 +9,11 @@ namespace ODP_NET_Theatre.Connection
     public class ConnectionParams
     {
         //TODO: Ukoliko koristite SUBP u VM, a Visual Studio van VM promenite localhost sa IP adresom VM
-        public static readonly string LOCAL_DATA_SOURCE = "//localhost:1521/xe";
+        public static readonly string LOCAL_DATA_SOURCE = "//localhost:1521/xepdb1";
         public static readonly string CLASSROOM_DATA_SOURCE = "//192.168.0.102:1522/db2016";
 
         //TODO: promeniti username i password
-        public static readonly string USER_ID = "username";
-        public static readonly string PASSWORD = "password";
+        public static readonly string USER_ID = "dragon";
+        public static readonly string PASSWORD = "ftn";
     }
 }
