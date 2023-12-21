@@ -1,5 +1,6 @@
 ﻿using ODP_NET_Theatre.ConnectionPool;
 using ODP_NET_Theatre.DTO;
+using ODP_NET_Theatre.DTO.ComplexQuery3;
 using ODP_NET_Theatre.Model;
 using ODP_NET_Theatre.Utils;
 using System;
@@ -76,6 +77,34 @@ namespace ODP_NET_Theatre.DAO.Impl
             }
 
             return play;
+        }
+
+        public List<PlayDTO> FindMostVisitedPlays()
+        {
+            string query = "select p.id_pl,name_pl , AVG(s.numofspec_sh)\n"
+                + " from play p, showing s\n"
+                + " where p.id_pl = s.play_id_pl\n"
+                + " group by p.id_pl , name_pl \n"
+                + " having AVG(s.numofspec_sh) >= ALL(select AVG(numofspec_sh) from showing group by play_id_pl)";
+            List<PlayDTO> result = new List<PlayDTO>();
+
+            using(IDbConnection connection = ConnectionUtil_Pooling.GetConnection())
+            {
+                connection.Open();
+                using(IDbCommand command = connection.CreateCommand())
+                {
+                    command.CommandText= query;
+                    using(IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PlayDTO dto = new PlayDTO(reader.GetInt32(0), reader.GetString(1), reader.GetDouble(2));
+                            result.Add(dto);
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
 

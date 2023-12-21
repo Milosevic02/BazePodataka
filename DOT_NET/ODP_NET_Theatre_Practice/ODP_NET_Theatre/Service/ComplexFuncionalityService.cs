@@ -2,6 +2,7 @@
 using ODP_NET_Theatre.DAO.Impl;
 using ODP_NET_Theatre.DTO.ComplexQuery1;
 using ODP_NET_Theatre.DTO.ComplexQuery2;
+using ODP_NET_Theatre.DTO.ComplexQuery3;
 using ODP_NET_Theatre.Model;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace ODP_NET_Theatre.Service
         private static readonly ISceneDAO sceneDAO = new SceneDAOImpl();
         private static readonly IShowingDAO showingDAO = new ShowingDAOImpl();
         private static readonly IPlayDAO playDAO = new PlayDAOImpl();
+        private static readonly IRoleDAO roleDAO = new RoleDAOImpl();
+
 
         //complex query 1
         public List<ScenesForTheatreDTO> GetScenesForTheatres()
@@ -45,6 +48,28 @@ namespace ODP_NET_Theatre.Service
                 ret.Add(dto);
             }
             return ret;
+        }
+
+        //complex query 3
+        public List<PlayDTO> GetMostVisitedPlays()
+        {
+            List<PlayDTO> result = new List<PlayDTO>();
+
+            foreach (PlayDTO playDTO in playDAO.FindMostVisitedPlays())
+            {
+
+                foreach (Role role in roleDAO.FindRoleByPlayID(playDTO.IdPl))
+                {
+                    playDTO.Roles.Add(role);
+                }
+
+                playDTO.MaleRolesTotal = roleDAO.FindCountForRoleGender(playDTO.IdPl, "m");
+                playDTO.FemaleRolesTotal = roleDAO.FindCountForRoleGender(playDTO.IdPl, "z");
+
+                result.Add(playDTO);
+            }
+
+            return result;
         }
 
     }

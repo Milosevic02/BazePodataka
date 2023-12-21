@@ -1,5 +1,6 @@
 ﻿using ODP_NET_Theatre.DTO.ComplexQuery1;
 using ODP_NET_Theatre.DTO.ComplexQuery2;
+using ODP_NET_Theatre.DTO.ComplexQuery3;
 using ODP_NET_Theatre.Model;
 using ODP_NET_Theatre.Service;
 using Oracle.ManagedDataAccess.Client;
@@ -26,6 +27,10 @@ namespace ODP_NET_Theatre.UIHandler
                 Console.WriteLine(
                       "\n2  - Prikazati informacije o predstavama koje se prikazuju. Pored osnovnih informacija o predstavama prikazati sva prikazivanja"
                           + "\n     za svaku od njih. Za svaku predstavu prikazati ukupan broj gledalaca, prosecan broj gledalaca i broj prikazivanja.");
+                Console.WriteLine(
+                        "\n3  - Prikazati id, nazive i prosecan broj gledalaca predstava koje imaju najveci prosecan broj gledalaca. Za te predstave prikazati listu uloga."
+                                + "\n     Pored toga prikazati koliko ukupno ima muskih uloga i koliko ukupno ima zenskih uloga..");
+                
 
 
                 Console.WriteLine("\nX  - Izlazak iz kompleksnih upita");
@@ -41,7 +46,7 @@ namespace ODP_NET_Theatre.UIHandler
                         ShowReportingForShowingShows();
                         break;
                     case "3":
-                        // TODO:
+                        ShowMostVisitedShow();
                         break;
                 }
 
@@ -113,6 +118,32 @@ namespace ODP_NET_Theatre.UIHandler
                 Console.WriteLine(ex.Message);
             }
 
+        }
+
+        public void ShowMostVisitedShow()
+        {
+            try
+            {
+                foreach (PlayDTO p in complexQueryService.GetMostVisitedPlays())
+                {
+                    Console.WriteLine(PlayDTO.GetFormatedHeader());
+                    Console.WriteLine(p);
+                    Console.WriteLine("\t\t--------------------ULOGE------------------------");
+                    Console.WriteLine("\t\t" + Role.GetFormattedHeader());
+                    foreach (Role role in p.Roles)
+                    {
+                        Console.WriteLine("\t\t" + role);
+                    }
+                    Console.WriteLine("\t\t-----------UKUPAN BROJ ZENSKIH ULOGA-------------");
+                    Console.WriteLine("\t\t" + p.FemaleRolesTotal);
+                    Console.WriteLine("\t\t-----------UKUPAN BROJ MUSKIH ULOGA--------------");
+                    Console.WriteLine("\t\t" + p.MaleRolesTotal);
+                }
+            }
+            catch (DbException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
