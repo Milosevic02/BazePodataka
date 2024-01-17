@@ -21,5 +21,14 @@ FILE *otvoriDatoteku(char *filename){
 }
 
 void kreirajDatoteku(char* filename){
-
+    FILE *fajl = fopen(filename,"wb");
+    if(fajl == NULL){
+		printf("Doslo je do greske prilikom kreiranja datoteke \"%s\"!\n", filename);
+    }else{
+        BLOK blok;
+        strcpy(blok.slogovi[0].evidBroj,OZNAKA_KRAJA_DATOTEKE);
+        fwrite(&blok,sizeof(BLOK),1,fajl);
+        		printf("Datoteka \"%s\" uspesno kreirana.\n", filename);
+		fclose(fajl);
+    }
 }
