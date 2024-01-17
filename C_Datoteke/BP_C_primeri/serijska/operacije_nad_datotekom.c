@@ -172,6 +172,35 @@ void azurirajSlog(FILE *fajl,char *evidBroj , char *oznakaCelije,int duzinaKazne
     }
 }
 
+void obrisiSlogLogicki(FILE *fajl,char *evidBroj){
+    if(fajl != NULL){
+        printf("Datoteka nije otvorena");
+        return;
+    }
+    fseek(fajl,0,SEEK_SET);
+    BLOK blok;
+    while(fread(&blok,sizeof(BLOK),1,fajl)){
+        for(int i = 0;i<FBLOKIRANJA;i++){
+            if(strcmp(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE) == 0){
+                printf("Nema tog sloga");
+                return;
+            }
+
+            if(strcmp(blok.slogovi[i].evidBroj,evidBroj) == 0 && !blok.slogovi[i].deleted){
+                blok.slogovi[i].deleted = 1;
+                fseek(fajl,-sizeof(BLOK),SEEK_CUR);
+                fwrite(&blok,sizeof(BLOK),1,fajl);
+
+                printf("Slog ;logicki obrisan\n");
+                return;
+            }
+        }
+    }
+}
+
+
+
+
 
 
 
