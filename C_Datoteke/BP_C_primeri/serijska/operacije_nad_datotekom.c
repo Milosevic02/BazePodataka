@@ -143,6 +143,35 @@ void ispisiSlog(SLOG *slog){
 		slog->duzinaKazne);
 }
 
+void azurirajSlog(FILE *fajl,char *evidBroj , char *oznakaCelije,int duzinaKazne){
+    if(fajl == NULL){
+        printf("Datoteka nije otvorena!\n");
+        return;
+    }
+
+    fseek(fajl,0,SEEK_SET);
+    BLOK blok;
+    while(fread(&blok,sizeof(BLOK),1,fajl)){
+        for(int i = 0;i<FBLOKIRANJA;i++){
+            if(strcmp(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE) == 0){
+                printf("Slog koji zelite menjati ne postoji\n");
+                return;
+            }
+
+            if(strcmp(blok.slogovi[i].evidBroj,evidBroj) == 0 && !blok.slogovi[i].deleted){
+                strcpy(blok.slogovi[i].oznakaCelije,oznakaCelije);
+                blok.slogovi[i].duzinaKazne = duzinaKazne;
+
+                fseek(fajl,-sizeof(blok),SEEK_CUR);
+                fwrite(&blok,sizeof(blok),1,fajl);
+
+                printf("Slog izmenjen.\n");
+                return;
+            }
+        }
+    }
+}
+
 
 
 
