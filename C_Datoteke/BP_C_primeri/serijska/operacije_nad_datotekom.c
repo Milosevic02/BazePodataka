@@ -130,6 +130,19 @@ void ispisiSveSlogove(FILE *fajl){
     }
 }
 
+void ispisiSlog(SLOG *slog){
+	printf("%8s  %7s  %02d-%02d-%4d %02d:%02d %7s %6d",
+        slog->evidBroj,
+		slog->sifraZatvorenika,
+		slog->datumVremeDolaska.dan,
+		slog->datumVremeDolaska.mesec,
+		slog->datumVremeDolaska.godina,
+		slog->datumVremeDolaska.sati,
+		slog->datumVremeDolaska.minuti,
+		slog->oznakaCelije,
+		slog->duzinaKazne);
+}
+
 
 
 
