@@ -56,3 +56,50 @@ SLOG *pronadjiSlog(FILE *fajl,char *evidBroj){
     return NULL;
 }
 
+void dodajSlog(FILE *file,SLOG *slog){
+    if(fajl == NULL){
+        printf("Datoteka nije otvorena!\n");
+        return;
+    }
+
+    SLOG *slogStari == pronadjiSlog(fajl,slog->evidBroj);
+    if(slogStari != NULL){
+        printf("Vec postoji slog sa tim evid brojem!\n");
+        return;
+    }
+
+    BLOK blok;
+    fseek(fajl,-sizeof(BLOK),SEEK_END);
+    fread(&blok,sizeof(BLOK),1,fajl);
+
+    int i;
+    for(i = 0;i<FBLOKIRANJA;i++){
+        if(strcmp(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE) == 0){
+            memcpy(&blok.slogovi[i],slog,sizeof(SLOG));
+            break;
+        }
+    }
+
+    i++;
+
+    if(i<FBLOKIRANJA){
+        strcpy(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE);
+
+        fseek(fajl,-sizeof(BLOK),SEEK_CUR);
+        fwrite(&blok,sizeof(BLOK),1,fajl);
+    }else{
+        fseek(fajl,-sizeof(BLOK),SEEK_CUR);
+        fwrite(&blok,sizeof(BLOK),1,fajl);
+
+        BLOK noviBlok;
+        strcpy(noviBlok.slogovi[0].evidBroj,OZNAKA_KRAJA_DATOTEKE);
+        fwrite(&noviBlok,sizeof(BLOK),1,fajl);
+    }
+
+	if (ferror(fajl)) {
+		printf("Greska pri upisu u fajl!\n");
+	} else {
+		printf("Upis novog sloga zavrsen.\n");
+	}
+}
+
