@@ -56,13 +56,13 @@ SLOG *pronadjiSlog(FILE *fajl,char *evidBroj){
     return NULL;
 }
 
-void dodajSlog(FILE *file,SLOG *slog){
+void dodajSlog(FILE *fajl,SLOG *slog){
     if(fajl == NULL){
         printf("Datoteka nije otvorena!\n");
         return;
     }
 
-    SLOG *slogStari == pronadjiSlog(fajl,slog->evidBroj);
+    SLOG *slogStari = pronadjiSlog(fajl,slog->evidBroj);
     if(slogStari != NULL){
         printf("Vec postoji slog sa tim evid brojem!\n");
         return;
@@ -196,6 +196,69 @@ void obrisiSlogLogicki(FILE *fajl,char *evidBroj){
             }
         }
     }
+}
+
+void obrisiSlogFizicki(FILE *fajl,char* evidBroj){
+    SLOG *slog = pronadjiSlog(fajl,evidBroj);
+    if (slog == NULL) {
+        printf("Slog koji zelite obrisati ne postoji!\n");
+        return;
+    }
+
+    BLOK blok,naredniBlok;
+    char evidBrojZaBrisanje[8+1];
+    strcpy(evidBrojZaBrisanje,evidBroj);
+
+    fseek(fajl,0,SEEK_SET);
+     while (fread(&blok, 1, sizeof(BLOK), fajl)) {
+        for (int i = 0; i < FBLOKIRANJA; i++) {
+
+            if (strcmp(blok.slogovi[i].evidBroj, OZNAKA_KRAJA_DATOTEKE) == 0) {
+                    if(i== 0){
+                        printf("(skracujem fajl...)\n");
+                        fseek(fajl,-sizeof(BLOK),SEEK_END);
+                        long bytesToKeep = ftell(fajl);
+                        ftruncate(fileno(fajl),bytesToKeep);
+                        fflush(fajl);
+                    }
+                    printf("Slog je fizicki obrisan.\n");
+                    return;
+            }
+
+            if (strcmp(blok.slogovi[i].evidBroj, evidBrojZaBrisanje) == 0) {
+                   if(strcmp(blok.slogovi[i].evidBroj,evidBroj) == 0 && blok.slogovi[i].deleted){
+                    continue;
+                   }
+
+                   for(int j = i+1;j<FBLOKIRANJA;j++){
+                        memcpy(&(blok.slogovi[j-1]),&(blok.slogovi[j]),sizeof(SLOG));
+                   }
+
+                   int podatakaProcitano = fread(&naredniBlok,sizeof(BLOK),1,fajl);
+
+                   if(podatakaProcitano){
+                        fseek(fajl,-sizeof(BLOK),SEEK_CUR);
+
+                        memcpy(&(blok.slogovi[FBLOKIRANJA-1]),&(naredniBlok.slogovi[0]),sizeof(SLOG));
+                        strcpy(evidBrojZaBrisanje,naredniBlok.slogovi[0].evidBroj);
+                   }
+
+                   fseek(fajl,-sizeof(BLOK),SEEK_CUR);
+                   fwrite(&blok,sizeof(BLOK),1,fajl);
+                   fseek(fajl,0,SEEK_CUR);
+
+                    if (!podatakaProcitano) {
+                        //Ako nema vise blokova posle trentnog, mozemo prekinuti algoritam.
+                        printf("Slog je fizicki obrisan.\n");
+                        return;
+                    }
+
+                    break;
+
+
+            }
+        }
+     }
 }
 
 
