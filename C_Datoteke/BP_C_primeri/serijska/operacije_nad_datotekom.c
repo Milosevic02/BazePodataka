@@ -103,3 +103,42 @@ void dodajSlog(FILE *file,SLOG *slog){
 	}
 }
 
+void ispisiSveSlogove(FILE *fajl){
+    if(fajl == NULL){
+        printf("Datoteka nije otvorena\n");
+        return;
+    }
+
+    fseek(fajl,0,SEEK_SET);
+    BLOK blok;
+    int rbBloka = 0;
+    printf("BL SL Evid.Br   Sif.Zat      Dat.Vrem.Dol  Celija  Kazna\n");
+    while(fread(&blok,sizeof(BLOK),1,fajl)){
+        for(int i = 0;i<FBLOKIRANJA;i++){
+            if(strcmp(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE) == 0){
+                printf("B%d S%d *\n", rbBloka, i);
+                break;
+            }
+
+            if(!blok.slogovi[i].deleted){
+                printf("B%d S%d",rbBloka,i);
+                ispisiSlog(&blok.slogovi[i]);
+                printf("\n");
+            }
+        }
+        rbBloka++;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
