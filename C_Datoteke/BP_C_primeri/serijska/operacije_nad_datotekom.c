@@ -32,3 +32,27 @@ void kreirajDatoteku(char* filename){
 		fclose(fajl);
     }
 }
+
+SLOG *pronadjiSlog(FILE *fajl,char *evidBroj){
+    if(fajl == NULL){
+        return NULL;
+    }
+    fseek(fajl,0,SEEK_SET);
+    BLOK blok;
+
+    while(fread(&blok,sizeof(BLOK),1,fajl)){
+        for(int i = 0;i<FBLOKIRANJA;i++){
+            if(strcmp(blok.slogovi[i].evidBroj,OZNAKA_KRAJA_DATOTEKE) == 0){
+                return NULL;
+            }
+            if(strcmp(blok.slogovi[i].evidBroj,evidBroj) == 0 && !blok.slogovi[i].deleted){
+                SLOG *slog = (SLOG*)malloc(sizeof(SLOG));
+                memcpy(slog,&blok.slogovi[i],sizeof(SLOG));
+                return slog;
+            }
+        }
+
+    }
+    return NULL;
+}
+
