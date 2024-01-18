@@ -29,7 +29,10 @@ int main() {
             scanf("%s", filename);
             pFile = safeFopen(filename);
             break;
-
+        case 2:
+            record = scanRecord(WITHOUT_KEY);
+            handleResult(insertRecord(pFile,record));
+            break;
         default:
             break;
         }
@@ -79,3 +82,15 @@ FILE *safeFopen(char filename[]) {
 
     return pFile;
 }
+
+void handleResult(int returnCode){
+    if(returnCode <0){
+        puts("Operacija neuspesna");
+    }else{
+        puts("Operacija uspesna");
+    }
+}
+
+
+
+
