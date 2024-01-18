@@ -28,3 +28,11 @@ int nextBucketIndex(int currentIndex){
     return (currentIndex + STEP) % B;
 }
 
+void printHeader() {
+    printf("status \t key \t code \t date\n");
+}
+
+void printRecord(Record record, int header) {
+    if (header) printHeader();
+    printf("%d \t %d \t %s \t %s\n", record.status, record.key, record.code, record.date);
+}
