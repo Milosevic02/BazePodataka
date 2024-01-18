@@ -96,3 +96,14 @@ int insertRecord(FILE *pFile,Record record){
     }
 
 }
+
+void printContent(FILE *pFile) {
+    int i;
+    Bucket bucket;
+
+    for (i = 0; i < B; i++) {
+        readBucket(pFile, &bucket, i);
+        printf("\n####### BUCKET - %d #######\n", i+1);
+        printBucket(bucket);
+    }
+}

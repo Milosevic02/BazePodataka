@@ -43,3 +43,11 @@ int scanKey() {
     scanf("%d", &key);
     return key;
 }
+
+void printBucket(Bucket bucket) {
+    int i;
+    printHeader();
+    for (i = 0; i < BUCKET_SIZE; i++) {
+        printRecord(bucket.records[i], WITHOUT_HEADER);
+    }
+}

@@ -33,6 +33,8 @@ int main() {
             record = scanRecord(WITHOUT_KEY);
             handleResult(insertRecord(pFile,record));
             break;
+        case 6:
+            printContent(pFile);
         default:
             break;
         }
