@@ -107,3 +107,50 @@ void printContent(FILE *pFile) {
         printBucket(bucket);
     }
 }
+
+int alreadyExistsForModify(FindRecordResult findResult) {
+    if (findResult.ind1) {                              // da li je bilo neuspesno trazenje
+        return 0;                                       // slog nije pronadjen
+    }
+
+    #ifdef LOGICAL                                      /* za verziju sa logickim brisanjem */
+    if (findResult.record.status == DELETED) {          // da li pronadjeni slog logicki obrisan
+        return 0;                                       // slog nije pronadjen
+    }
+    #endif
+
+    return 1;
+}
+
+int modifyRecord(FILE *pFile,Record record){
+    record.status = ACTIVE;
+    FindRecordResult findResult = findRecord(pFile,record.key);
+    if (!alreadyExistsForModify(findResult)) {                          // ukoliko slog nije pronadjen ili je logicki obrisan
+        return -1;
+    }
+    findResult.bucket.records[findResult.recordIndex] = record;
+
+    if(saveBucket(pFile,&findResult.bucket,findResult.bucketIndex)){
+        return findResult.bucketIndex;
+    }else{
+        return -2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

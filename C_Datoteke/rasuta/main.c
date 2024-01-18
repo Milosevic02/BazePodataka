@@ -33,6 +33,29 @@ int main() {
             record = scanRecord(WITHOUT_KEY);
             handleResult(insertRecord(pFile,record));
             break;
+        case 3:
+            key = scanKey();
+            FindRecordResult findResult = findRecord(pFile,key);
+
+            if(findResult.ind1 != RECORD_FOUND || findResult.record.status != ACTIVE){
+                puts("Neuspesno trazenje");
+
+            }else{
+                printRecord(findResult.record,WITHOUT_HEADER);
+                record = scanRecord(WITHOUT_KEY);
+                record.key = key;
+                handleResult(modifyRecord(pFile,record));
+            }
+            break;
+        case 4:
+            key = scanKey();
+            handleResult(removeRecord(pFile, key));
+            break;
+        case 5:
+            printf("key = ");
+            scanf("%d", &key);
+            handleFindResult(findRecord(pFile, key));
+            break;
         case 6:
             printContent(pFile);
         default:
@@ -93,6 +116,13 @@ void handleResult(int returnCode){
     }
 }
 
+void handleFindResult(FindRecordResult findResult) {
+    if (findResult.ind1 != RECORD_FOUND) {
+        puts("Neuspesno trazenje.");
+    } else {
+        printRecord(findResult.record, WITH_HEADER);
+    }
+}
 
 
 
