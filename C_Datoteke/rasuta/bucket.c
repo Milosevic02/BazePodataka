@@ -36,3 +36,10 @@ void printRecord(Record record, int header) {
     if (header) printHeader();
     printf("%d \t %d \t %s \t %s\n", record.status, record.key, record.code, record.date);
 }
+
+int scanKey() {
+    int key;
+    printf("key = ");
+    scanf("%d", &key);
+    return key;
+}
