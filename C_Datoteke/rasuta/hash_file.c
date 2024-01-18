@@ -59,3 +59,40 @@ FindRecordResult findRecord(FILE *pFile,int key){
     }
     return retVal;
 }
+
+int alreadyExistsForInsert(FindRecordResult findResult){
+    if(findResult.ind1 == 0){
+        return 1;
+    }
+    return 0;
+}
+
+int saveBucket(FILE *pFile,Bucket* pBucket,int bucketIndex){
+    fseek(pFile,bucketIndex * sizeof(Bucket),SEEK_SET);
+    int retVal = fwrite(pBucket,sizeof(Bucket),1,pFile) == 1;
+    fflush(pFile);
+    return retVal;
+}
+
+
+int insertRecord(FILE *pFile,Record record){
+    record.status = ACTIVE;
+    FindRecordResult findResult = findRecord(pFile,record.key);
+
+    if(alreadyExistsForInsert(findResult)){
+        return -1;
+    }
+    if(findResult.ind2 == 1){
+        puts("Unos nemoguc. Datoteka popnjena");
+        return -1;
+    }
+
+    findResult.bucket.records[findResult.recordIndex] = record;
+
+    if(saveBucket(pFile,&findResult.bucket,findResult.bucketIndex)){
+        return findResult.bucketIndex;
+    }else{
+        return -2;
+    }
+
+}
