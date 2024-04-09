@@ -1,0 +1,41 @@
+1. Napravi Konekciju:
+	
+	OracleConnectionStringBuilder ocsb = new OracleConnectionStringBuilder();
+	ocsb.DataSource = Connection.ConnectionParams.DATA_SOURCE;
+	ocsb.UserID = Connection.ConnectionParams.USER_ID;
+	ocsb.Password = Connection.ConnectionParams.PASSWORD;
+	//Pooling
+	ocsb.Pooling = true;
+	ocsb.MinPoolSize = 1;
+	ocsb.MaxPoolSize = 10;
+	ocsb.IncrPoolSize = 3;
+	ocsb.ConnectionLifeTime = 5;
+	ocsb.ConnectionTimeout = 30;
+	instance = new OracleConnection(ocsb.ConnectionString);
+return instance
+
+//U Dispose
+instance.Close();
+instance.Dispose();
+
+2. 	-Implementirati ICRUD metode
+	-Pozvati ih u service
+	-Pozvati ih u UIHandler da ih proveris
+
+3. Complex Query:
+		-Napraviti sta treba da se ispise u DTO
+		-Napraviti DAO klase sa metodama implementiranim
+		-Pozvati u Service i spojiti sve
+		- Uraditi Ispis u UIHandler
+		
+4. Transakcija:
+	-U DAO Posle napravljene komande kucam: 
+		IdbTransaction transaction = connection.BeginTransaction();
+		try{
+			command.CommandText = sql;
+			command.ExecuteNonQuery();
+			transaction.Commit();
+		}catche(DbException ex){
+			transaction.Rollback();
+		}
+		
